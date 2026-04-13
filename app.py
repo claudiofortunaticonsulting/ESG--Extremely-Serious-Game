@@ -1,86 +1,51 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
-st.set_page_config(page_title="ESG Market Game", layout="wide")
-
-st.title("🌱 ESG Market Simulator")
-st.markdown("Gioca con il mercato: scopri quando ESG vince davvero.")
-
-# SIDEBAR
-st.sidebar.header("Parametri")
-
-MARKET_CONTROL = st.sidebar.slider("Controllo mercato", 0.1, 1.0, 0.6)
-PENALTY = st.sidebar.slider("Penalità greenwashing", 0.2, 1.0, 0.7)
-ESG_COST = st.sidebar.slider("Costo ESG", 5, 40, 15)
-ESG_REWARD = st.sidebar.slider("Reward ESG", 0.05, 1.0, 0.3)
-GW_BONUS = st.sidebar.slider("Bonus Greenwashing", 0.1, 0.5, 0.25)
-THRESHOLD = st.sidebar.slider("Soglia conversione", 0.1, 0.8, 0.4)
+# Improved simulation parameters
+st.sidebar.title('Simulation Parameters')
+num_simulations = st.sidebar.number_input('Number of Simulations', min_value=1, max_value=1000, value=100)
+duration = st.sidebar.slider('Duration (Years)', min_value=1, max_value=10, value=5)
+initial_investment = st.sidebar.number_input('Initial Investment', min_value=0, value=10000)
 
 class Azienda:
-    def __init__(self):
-        self.strategy = np.random.choice(['ESG','Greenwash','Waiter'], p=[0.1,0.2,0.7])
-        self.reputation = 0.9
+    def __init__(self, initial_investment):
+        self.initial_investment = initial_investment
+        self.profit_history = []
+        self.current_value = initial_investment
 
-    def step(self, esg_pct):
-        profit = 20
+    def simulate_year(self):
+        # Example profit generation logic
+        profit = np.random.normal(loc=0.1, scale=0.02) * self.current_value
+        self.current_value += profit
+        self.profit_history.append(profit)
 
-        if self.strategy == 'ESG':
-            profit -= ESG_COST
-            profit += esg_pct * ESG_REWARD
-            self.reputation = min(1.2, self.reputation + 0.02)
+def run_sim(num_simulations, duration, initial_investment):
+    azienda = Azienda(initial_investment)
+    metrics = {'Year': [], 'Profit': [], 'Total Value': []}
 
-        elif self.strategy == 'Greenwash':
-            prob = MARKET_CONTROL * (1.2 - self.reputation)
-            if np.random.rand() < prob:
-                profit *= (1 - PENALTY)
-                self.reputation *= 0.6
-            else:
-                profit += ESG_COST * GW_BONUS
+    for year in range(duration):
+        azienda.simulate_year()
+        metrics['Year'].append(year + 1)
+        metrics['Profit'].append(azienda.profit_history[-1])
+        metrics['Total Value'].append(azienda.current_value)
 
-        elif self.strategy == 'Waiter':
-            if esg_pct > THRESHOLD:
-                self.strategy = 'ESG'
+    return metrics
 
-        profit *= (0.6 + 0.4 * self.reputation)
+if __name__ == '__main__':
+    st.title('Azienda Simulation')
+    metrics = run_sim(num_simulations, duration, initial_investment)
+    df = pd.DataFrame(metrics)
 
-        return max(0, profit)
+    # Visualization
+    st.subheader('Profit Over Time')
+    plt.figure(figsize=(10, 5))
+    sns.lineplot(data=df, x='Year', y='Profit', marker='o')
+    st.pyplot()
 
-def run_sim():
-    pop = [Azienda() for _ in range(100)]
-    history = {'ESG':[], 'Greenwash':[], 'Waiter':[]}
-
-    for _ in range(50):
-        strategies = [a.strategy for a in pop]
-        esg_pct = strategies.count('ESG') / 100
-
-        profits = {'ESG':[], 'Greenwash':[], 'Waiter':[]}
-
-        for a in pop:
-            p = a.step(esg_pct)
-            profits[a.strategy].append(p)
-
-        avg = {k: np.mean(v) if v else 0 for k,v in profits.items()}
-
-        for a in pop:
-            if np.random.rand() < 0.15:
-                best = max(avg, key=avg.get)
-                if best != a.strategy and np.random.rand() < 0.5:
-                    a.strategy = best
-
-        for k in history:
-            history[k].append(strategies.count(k))
-
-    return history
-
-if st.button("🚀 Run Simulation"):
-    history = run_sim()
-
-    fig, ax = plt.subplots()
-    ax.plot(history['ESG'], label='ESG')
-    ax.plot(history['Greenwash'], label='Greenwash')
-    ax.plot(history['Waiter'], label='Waiter')
-    ax.legend()
-
-    st.pyplot(fig)
-    st.success("Simulazione completata!")
+    st.subheader('Total Value Over Time')
+    plt.figure(figsize=(10, 5))
+    sns.lineplot(data=df, x='Year', y='Total Value', marker='o', color='g')
+    st.pyplot()
