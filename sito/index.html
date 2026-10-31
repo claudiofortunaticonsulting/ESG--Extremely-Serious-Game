@@ -88,16 +88,41 @@ header.top .btn { padding: 10px 16px; font-size: 0.88rem; }
 
 /* Hero */
 .hero { padding-block: clamp(56px, 8vw, 104px) clamp(48px, 6vw, 80px); }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: end; }
-.hero h1 { font-size: clamp(2.5rem, 6.2vw, 4.6rem); margin-top: 18px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.hero h1 { font-size: clamp(2.4rem, 5.4vw, 4.2rem); margin-top: 18px; }
 .hero h1 em { font-style: normal; color: var(--moss); }
 .hero .lead { margin-top: 24px; }
 .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.ledger { border-top: 2px solid var(--ink); }
-.ledger div { display: grid; grid-template-columns: 5.5rem minmax(0,1fr); gap: 14px; padding-block: 14px; border-bottom: 1px solid var(--line); align-items: baseline; }
-.ledger b { font: 500 1.6rem/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.hero-visual { position: relative; padding: 0 0 40px 28px; }
+.hero-photo { aspect-ratio: 4 / 5; margin: 0; }
+.float-card {
+  position: absolute; z-index: 2; background: var(--surface); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 14px; box-shadow: 0 18px 40px -18px rgba(8,19,15,.45); padding: 14px 16px;
+}
+.fc-plan { left: 0; bottom: 0; display: grid; gap: 6px; }
+.fc-k { font: 500 0.7rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.fc-axis { stroke: var(--line); stroke-width: 1; }
+.fc-bar { fill: var(--chip); }
+.fc-hi { fill: var(--moss); }
+.fc-line { fill: none; stroke: var(--ochre); stroke-width: 2; }
+.fc-dot { fill: var(--ochre); }
+.fc-yrs { display: flex; justify-content: space-between; padding-inline: 8px 30px; font: 400 0.68rem/1 var(--f-mono); color: var(--muted); }
+.fc-yrs i { font-style: normal; }
+.fc-esg { right: -10px; top: 28px; display: flex; align-items: center; gap: 12px; }
+.fc-ring { fill: none; stroke: var(--chip); stroke-width: 7; }
+.fc-ring-on { fill: none; stroke: var(--moss); stroke-width: 7; stroke-linecap: round; }
+.fc-esg b { display: block; font: 700 1rem/1.1 var(--f-display); }
+.fc-esg small { color: var(--muted); font-size: 0.78rem; }
+.ledger { border-top: 2px solid var(--ink); margin-top: clamp(40px, 6vw, 72px); display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0 32px; }
+.ledger div { display: grid; grid-template-columns: 4.5rem minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--line); align-items: baseline; }
+.ledger b { font: 500 1.8rem/1 var(--f-display); font-variant-numeric: tabular-nums; color: var(--moss); }
 .ledger span { color: var(--muted); font-size: 0.95rem; }
-@media (max-width: 820px) { .hero-grid { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: minmax(0,1fr); }
+  .hero-visual { max-width: 460px; }
+  .fc-esg { right: 0; }
+  .ledger { grid-template-columns: minmax(0,1fr); }
+}
 
 /* Prossimità */
 .prox-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: clamp(32px, 5vw, 80px); }
@@ -113,16 +138,33 @@ header.top .btn { padding: 10px 16px; font-size: 0.88rem; }
 .sec-head h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 14px; max-width: 18ch; }
 .sec-head .lead { max-width: 46ch; font-size: 1.05rem; }
 
-.checkup { border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; margin-bottom: 40px; background: var(--paper); }
-.checkup p.q { font-weight: 600; margin-bottom: 14px; }
-.chips { display: flex; flex-wrap: wrap; gap: 10px; }
-.chips label {
-  display: inline-flex; align-items: center; gap: 8px; font-size: 0.93rem; cursor: pointer;
-  padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); user-select: none;
+/* Foto con sfondo grafico di riserva (se l'immagine non carica resta il motivo) */
+.photo {
+  position: relative; overflow: hidden; border-radius: 18px; max-width: 100%;
+  background:
+    radial-gradient(circle at 20% 25%, color-mix(in srgb, var(--moss) 55%, transparent) 0 18%, transparent 19%),
+    radial-gradient(circle at 78% 70%, color-mix(in srgb, var(--ochre) 45%, transparent) 0 14%, transparent 15%),
+    repeating-linear-gradient(135deg, transparent 0 22px, color-mix(in srgb, var(--band-ink) 7%, transparent) 22px 23px),
+    linear-gradient(160deg, var(--band), color-mix(in srgb, var(--band) 70%, var(--moss)));
 }
-.chips input { accent-color: var(--moss); margin: 0; }
-.chips label:has(input:checked) { border-color: var(--moss); background: var(--chip); }
-.checkup .hint { margin-top: 14px; font: 400 0.85rem/1.4 var(--f-mono); color: var(--muted); }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(8,19,15,.55)); pointer-events: none; }
+.photo figcaption { position: absolute; left: 18px; bottom: 16px; right: 18px; z-index: 1; color: #f2f6f4; font: 500 0.8rem/1.3 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; }
+
+.svc-fig { margin-top: 22px; width: 100%; max-width: 260px; height: auto; color: var(--moss); }
+.svc-fig .ln { stroke: var(--line); }
+.svc-fig .tx { fill: var(--muted); font: 500 10px var(--f-mono); }
+.svc-fig .ac { fill: var(--moss); }
+.svc-fig .oc { fill: var(--ochre); }
+.svc-fig .sf { fill: var(--chip); stroke: var(--moss); }
+
+.gallery { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 16px; }
+.gallery .photo { aspect-ratio: 4 / 5; }
+.gallery .photo:first-child { aspect-ratio: auto; min-height: 100%; }
+@media (max-width: 760px) {
+  .gallery { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .gallery .photo:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+}
 
 .services { display: grid; gap: 0; border-top: 2px solid var(--ink); }
 .svc {
@@ -138,8 +180,6 @@ header.top .btn { padding: 10px 16px; font-size: 0.88rem; }
 .svc li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 10px; height: 2px; background: var(--moss); }
 .svc .out { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 0.95rem; }
 .svc .out b { font-weight: 600; }
-.services.filtering .svc { opacity: 0.38; }
-.services.filtering .svc.match { opacity: 1; background: linear-gradient(90deg, var(--chip), transparent 70%); }
 @media (max-width: 860px) {
   .svc { grid-template-columns: minmax(0,1fr); }
   .svc .code { padding-top: 0; }
@@ -248,6 +288,32 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <a class="btn ghost" href="#servizi">Vedi i servizi</a>
       </div>
     </div>
+    <div class="hero-visual">
+      <figure class="photo hero-photo">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=1100&amp;q=70" alt="Riunione di lavoro attorno a un tavolo" loading="eager" onerror="this.remove()">
+      </figure>
+      <div class="float-card fc-plan" aria-hidden="true">
+        <span class="fc-k">Piano industriale · EBITDA</span>
+        <svg viewBox="0 0 180 80" width="180" height="80">
+          <line x1="0" y1="70" x2="180" y2="70" class="fc-axis"/>
+          <rect x="12" y="44" width="30" height="26" rx="3" class="fc-bar"/>
+          <rect x="62" y="32" width="30" height="38" rx="3" class="fc-bar"/>
+          <rect x="112" y="18" width="30" height="52" rx="3" class="fc-bar fc-hi"/>
+          <polyline points="27,40 77,28 127,12" class="fc-line"/>
+          <circle cx="127" cy="12" r="4" class="fc-dot"/>
+        </svg>
+        <span class="fc-yrs"><i>Anno 1</i><i>Anno 2</i><i>Anno 3</i></span>
+      </div>
+      <div class="float-card fc-esg" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="56" height="56">
+          <circle cx="32" cy="32" r="26" class="fc-ring"/>
+          <circle cx="32" cy="32" r="26" class="fc-ring-on" pathLength="100" stroke-dasharray="72 100" transform="rotate(-90 32 32)"/>
+        </svg>
+        <span><b>E · S · G</b><small>dati misurati, non dichiarati</small></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
     <div class="ledger" aria-label="In sintesi">
       <div><b>20+</b><span>anni di consulenza direzionale, finanziaria e organizzativa</span></div>
       <div><b>4</b><span>aree di intervento integrate: ESG, organizzazione, piani, operazioni straordinarie</span></div>
@@ -284,20 +350,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="lead">Si possono attivare singolarmente o insieme. Spesso il percorso parte da un'esigenza precisa, come un questionario ESG di un cliente o una banca che chiede un piano, e si allarga da lì.</p>
     </div>
 
-    <div class="checkup" aria-labelledby="ck-q">
-      <p class="q" id="ck-q">Da dove partire? Seleziona le situazioni che riconosci.</p>
-      <div class="chips">
-        <label><input type="checkbox" id="ck-esg" data-area="esg"> Un cliente o la banca mi chiede dati ESG</label>
-        <label><input type="checkbox" id="ck-org" data-area="org"> L'azienda è cresciuta ma l'organizzazione no</label>
-        <label><input type="checkbox" id="ck-kpi" data-area="org"> Non ho numeri mensili affidabili</label>
-        <label><input type="checkbox" id="ck-plan" data-area="plan"> Devo presentare un piano a banche o soci</label>
-        <label><input type="checkbox" id="ck-inv" data-area="plan"> Valuto un investimento o un nuovo mercato</label>
-        <label><input type="checkbox" id="ck-ma" data-area="deal"> Penso a cedere, acquisire o al passaggio generazionale</label>
-        <label><input type="checkbox" id="ck-cri" data-area="deal"> Margini e cassa sono sotto pressione</label>
-      </div>
-      <p class="hint" id="ck-hint" aria-live="polite">Le aree pertinenti verranno evidenziate qui sotto.</p>
-    </div>
-
     <div class="services" id="services">
       <article class="svc" data-area="esg">
         <div class="code">A · ESG</div>
@@ -305,6 +357,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <h3>Sostenibilità ESG per PMI</h3>
           <p class="for">PER: PMI in filiera · imprese che accedono al credito</p>
           <p class="intro">Le richieste ESG arrivano alle PMI dai clienti grandi, dalle banche e dai bandi, anche quando la legge non le obbliga. Le trasformo in un percorso gestibile, che produca dati veri e vantaggi concreti.</p>
+          <svg class="svc-fig" viewBox="0 0 260 90" aria-hidden="true">
+            <circle cx="45" cy="45" r="34" class="sf" stroke-width="2"/><text x="45" y="52" text-anchor="middle" class="ac" style="font:700 20px var(--f-display)">E</text>
+            <circle cx="130" cy="45" r="34" class="sf" stroke-width="2"/><text x="130" y="52" text-anchor="middle" class="ac" style="font:700 20px var(--f-display)">S</text>
+            <circle cx="215" cy="45" r="34" class="sf" stroke-width="2"/><text x="215" y="52" text-anchor="middle" class="ac" style="font:700 20px var(--f-display)">G</text>
+            <text x="45" y="88" text-anchor="middle" class="tx">ambiente</text><text x="130" y="88" text-anchor="middle" class="tx">persone</text><text x="215" y="88" text-anchor="middle" class="tx">governance</text>
+          </svg>
         </div>
         <div>
           <ul>
@@ -324,6 +382,14 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <h3>Organizzazione e performance</h3>
           <p class="for">PER: PMI in crescita · aziende familiari</p>
           <p class="intro">Quando l'azienda cresce più in fretta della sua struttura, tutto passa dall'imprenditore. Ridisegno ruoli, processi e strumenti di controllo perché l'impresa funzioni anche senza di lui in ogni riunione.</p>
+          <svg class="svc-fig" viewBox="0 0 260 90" aria-hidden="true">
+            <path d="M130 26 V40 M40 40 H220 M40 40 V56 M130 40 V56 M220 40 V56" class="ln" fill="none" stroke-width="2"/>
+            <rect x="95" y="4" width="70" height="22" rx="5" class="ac"/>
+            <rect x="8" y="56" width="64" height="22" rx="5" class="sf" stroke-width="2"/>
+            <rect x="98" y="56" width="64" height="22" rx="5" class="sf" stroke-width="2"/>
+            <rect x="188" y="56" width="64" height="22" rx="5" class="sf" stroke-width="2"/>
+            <text x="40" y="71" text-anchor="middle" class="tx">operations</text><text x="130" y="71" text-anchor="middle" class="tx">commerciale</text><text x="220" y="71" text-anchor="middle" class="tx">finanza</text>
+          </svg>
         </div>
         <div>
           <ul>
@@ -343,6 +409,14 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <h3>Piani industriali e business plan</h3>
           <p class="for">PER: imprenditori · CdA · soci · banche</p>
           <p class="intro">Un piano credibile unisce strategia e numeri: ricavi, marginalità, investimenti e flussi di cassa. Lo costruisco con il management, in modo che sia uno strumento di governo e non un documento da cassetto.</p>
+          <svg class="svc-fig" viewBox="0 0 260 90" aria-hidden="true">
+            <line x1="0" y1="74" x2="260" y2="74" class="ln" stroke-width="1"/>
+            <rect x="20" y="46" width="44" height="28" rx="3" class="sf" stroke-width="1.5"/>
+            <rect x="108" y="32" width="44" height="42" rx="3" class="sf" stroke-width="1.5"/>
+            <rect x="196" y="14" width="44" height="60" rx="3" class="ac"/>
+            <polyline points="42,40 130,26 218,8" fill="none" stroke="var(--ochre)" stroke-width="2" stroke-dasharray="4 4"/>
+            <text x="42" y="88" text-anchor="middle" class="tx">Anno 1</text><text x="130" y="88" text-anchor="middle" class="tx">Anno 2</text><text x="218" y="88" text-anchor="middle" class="tx">Anno 3</text>
+          </svg>
         </div>
         <div>
           <ul>
@@ -362,6 +436,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <h3>Acquisizioni, ristrutturazioni e cessioni</h3>
           <p class="for">PER: imprese · fondi di private equity · investitori</p>
           <p class="intro">Supporto imprese e fondi nelle fasi delicate della vita aziendale: comprare, vendere, rilanciare. Con un occhio alla realtà operativa che i soli numeri non raccontano.</p>
+          <svg class="svc-fig" viewBox="0 0 260 90" aria-hidden="true">
+            <circle cx="40" cy="40" r="26" class="sf" stroke-width="2"/>
+            <circle cx="40" cy="40" r="10" class="oc"/>
+            <path d="M74 40 H150" fill="none" stroke="var(--moss)" stroke-width="2" stroke-dasharray="5 5"/>
+            <path d="M144 33 L154 40 L144 47" fill="none" stroke="var(--moss)" stroke-width="2"/>
+            <circle cx="205" cy="40" r="34" class="sf" stroke-width="2"/>
+            <circle cx="193" cy="40" r="11" class="ac"/><circle cx="218" cy="40" r="10" class="oc"/>
+            <text x="40" y="86" text-anchor="middle" class="tx">target</text><text x="112" y="30" text-anchor="middle" class="tx">closing</text><text x="205" y="88" text-anchor="middle" class="tx">gruppo integrato</text>
+          </svg>
         </div>
         <div>
           <ul>
@@ -375,6 +458,24 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </div>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- GALLERIA -->
+<section class="gallery-sec" aria-label="Immagini" style="padding-bottom:0">
+  <div class="wrap gallery">
+    <figure class="photo" style="margin:0">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="Ufficio moderno con postazioni di lavoro" loading="lazy" onerror="this.remove()">
+      <figcaption>Organizzazione</figcaption>
+    </figure>
+    <figure class="photo" style="margin:0">
+      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=800&amp;q=70" alt="Documenti con grafici e analisi finanziarie" loading="lazy" onerror="this.remove()">
+      <figcaption>Numeri e piani</figcaption>
+    </figure>
+    <figure class="photo" style="margin:0">
+      <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&amp;fit=crop&amp;w=800&amp;q=70" alt="Pale eoliche in un paesaggio aperto" loading="lazy" onerror="this.remove()">
+      <figcaption>Sostenibilità</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -517,23 +618,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <script>
 (function () {
-  // Check-up: evidenzia le aree di servizio pertinenti
-  var boxes = document.querySelectorAll('.chips input');
-  var list = document.getElementById('services');
-  var hint = document.getElementById('ck-hint');
-  var names = { esg: 'Sostenibilità ESG', org: 'Organizzazione e performance', plan: 'Piani industriali', deal: 'Acquisizioni, ristrutturazioni e cessioni' };
-  function update() {
-    var areas = {};
-    boxes.forEach(function (b) { if (b.checked) areas[b.dataset.area] = true; });
-    var keys = Object.keys(areas);
-    list.classList.toggle('filtering', keys.length > 0);
-    list.querySelectorAll('.svc').forEach(function (s) { s.classList.toggle('match', !!areas[s.dataset.area]); });
-    hint.textContent = keys.length
-      ? 'Aree consigliate: ' + keys.map(function (k) { return names[k]; }).join(' · ')
-      : 'Le aree pertinenti verranno evidenziate qui sotto.';
-  }
-  boxes.forEach(function (b) { b.addEventListener('change', update); });
-
   // Copia email
   document.querySelectorAll('[data-copy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
