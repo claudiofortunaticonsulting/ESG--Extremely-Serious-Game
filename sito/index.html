@@ -5,339 +5,446 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Consulting4Partners</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Claudio Fortunati – consulenza per PMI: sostenibilità ESG, organizzazione e performance, piani industriali, operazioni straordinarie per imprese e fondi. Vent'anni di esperienza, approccio di prossimità.">
+<meta name="description" content="Claudio Fortunati – consulenza per PMI: aumentiamo il valore delle PMI italiane attraverso la sostenibilità. Check-up ESG gratuito con benchmark su oltre 1.300 aziende, organizzazione, piani industriali, operazioni straordinarie.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: colonna editoriale larga, servizi come "fascicoli" numerati per area, una fascia scura per il metodo. */
+/* Layout: hero scuro a tutta pagina con la "mappa" delle 1.300 aziende, sezioni chiare a card, fasce scure per check-up e contatti; servizi a schede. */
 :root {
-  --paper: #f5f7f4;      /* carta fredda, leggermente verde */
+  --paper: #f3f6f4;
   --surface: #ffffff;
-  --ink: #12302c;        /* petrolio profondo */
-  --muted: #4c605b;
-  --line: #d5ddd8;
-  --moss: #2c7a57;       /* accento sostenibilità */
-  --ochre: #b8841c;      /* evidenza, usato con parsimonia */
-  --band: #12302c;
-  --band-ink: #e8efeb;
-  --band-muted: #a8bbb4;
-  --chip: #e3ece6;
+  --ink: #0f2b27;
+  --muted: #51655f;
+  --line: #d8e1dc;
+  --moss: #23805a;
+  --mint: #7fe0b4;
+  --amber: #f0b64a;
+  --tint: #e2efe8;
+  --deep: #0b2420;
+  --deep-2: #12352f;
+  --on-deep: #eaf3ee;
+  --on-deep-muted: #a3bcb3;
+  --shadow: 0 1px 2px rgba(11,36,32,.06), 0 12px 32px -14px rgba(11,36,32,.28);
 
   --f-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --f-body: "IBM Plex Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 
-  --wrap: 1120px;
-  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
-  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  --wrap: 1180px;
+  --gl: max(16px, env(safe-area-inset-left, 0px));
+  --gr: max(16px, env(safe-area-inset-right, 0px));
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #0d1c1a; --surface: #132724; --ink: #e6eeea; --muted: #9fb2ab; --line: #26403b;
-    --moss: #5cbf8f; --ochre: #e0b350; --band: #08130f; --band-ink: #e6eeea; --band-muted: #93a8a0;
-    --chip: #1b3531; color-scheme: dark;
+    --paper: #0c1a17; --surface: #12241f; --ink: #e5efea; --muted: #9db2aa; --line: #23403a;
+    --moss: #5cc893; --tint: #16302a; --deep: #071512; --deep-2: #0f2a25;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 34px -16px rgba(0,0,0,.6); color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #0d1c1a; --surface: #132724; --ink: #e6eeea; --muted: #9fb2ab; --line: #26403b;
-  --moss: #5cbf8f; --ochre: #e0b350; --band: #08130f; --band-ink: #e6eeea; --band-muted: #93a8a0;
-  --chip: #1b3531; color-scheme: dark;
+  --paper: #0c1a17; --surface: #12241f; --ink: #e5efea; --muted: #9db2aa; --line: #23403a;
+  --moss: #5cc893; --tint: #16302a; --deep: #071512; --deep-2: #0f2a25;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 34px -16px rgba(0,0,0,.6); color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
-body {
-  margin: 0; background: var(--paper); color: var(--ink);
-  font: 400 1.0625rem/1.65 var(--f-body);
-  -webkit-font-smoothing: antialiased;
-}
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--deep); }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--moss); outline-offset: 3px; border-radius: 2px; }
-h1, h2, h3 { font-family: var(--f-display); font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; margin: 0; }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3, h4 { font-family: var(--f-display); font-weight: 700; line-height: 1.06; letter-spacing: -0.025em; text-wrap: balance; margin: 0; }
 p { margin: 0; }
-.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
-.eyebrow { font: 500 0.78rem/1.2 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--moss); }
-section { padding-block: clamp(64px, 9vw, 112px); }
-.lead { font-size: 1.2rem; color: var(--muted); max-width: 62ch; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: var(--gl); padding-right: var(--gr); }
+section { padding-block: clamp(72px, 10vw, 128px); position: relative; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 0.76rem/1.2 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--moss); }
+.eyebrow::before { content: ""; width: 22px; height: 2px; background: currentColor; }
+.h2 { font-size: clamp(2.1rem, 4.6vw, 3.6rem); margin-top: 16px; max-width: 18ch; }
+.lead { font-size: 1.18rem; color: var(--muted); max-width: 60ch; }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; margin-bottom: 56px; }
+@media (max-width: 860px) { .sec-head { grid-template-columns: minmax(0,1fr); } }
+.ico { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; font: 600 0.98rem/1 var(--f-body);
+  padding: 16px 24px; border-radius: 999px; text-decoration: none; border: 0; cursor: pointer;
+  background: var(--amber); color: #1b1407; transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(240,182,74,.7); }
+.btn .arr { transition: transform .2s ease; }
+.btn:hover .arr { transform: translateX(4px); }
+.btn.dark { background: var(--ink); color: var(--paper); }
+.btn.dark:hover { box-shadow: var(--shadow); }
+.btn.line { background: transparent; color: var(--on-deep); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--on-deep) 40%, transparent); }
+.btn.line:hover { box-shadow: inset 0 0 0 1.5px var(--on-deep); }
 
 /* Header */
-header.top {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
-}
-header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-.brand { font-family: var(--f-display); font-weight: 700; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.01em; }
-.brand span { color: var(--moss); }
-nav.main { display: flex; gap: 22px; font-size: 0.95rem; }
-nav.main a { text-decoration: none; color: var(--muted); }
-nav.main a:hover { color: var(--ink); }
-.btn {
-  display: inline-flex; align-items: center; gap: 8px; font: 600 0.95rem/1 var(--f-body);
-  padding: 13px 20px; border-radius: 999px; text-decoration: none; border: 1.5px solid var(--ink);
-  background: var(--ink); color: var(--paper); cursor: pointer; transition: transform .15s ease, background .15s ease;
-}
-.btn:hover { transform: translateY(-1px); }
-.btn.ghost { background: transparent; color: var(--ink); }
-header.top .btn { padding: 10px 16px; font-size: 0.88rem; }
-@media (max-width: 860px) { nav.main { display: none; } }
+.top { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 20; transition: background .3s ease, box-shadow .3s ease; color: var(--on-deep); }
+.top.solid { background: color-mix(in srgb, var(--deep) 92%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(255,255,255,.06); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font: 800 1.15rem/1 var(--f-display); text-decoration: none; letter-spacing: -0.02em; }
+.brand-mark { width: 30px; height: 30px; border-radius: 9px; background: conic-gradient(from 200deg, var(--mint), var(--moss), var(--amber), var(--mint)); display: grid; place-items: center; color: var(--deep); font-size: 0.9rem; }
+.brand b { color: var(--mint); font-weight: 800; }
+.nav { display: flex; gap: 4px; }
+.nav a { text-decoration: none; font-size: 0.93rem; padding: 8px 12px; border-radius: 999px; color: var(--on-deep-muted); transition: color .2s, background .2s; }
+.nav a:hover { color: var(--on-deep); }
+.nav a.on { color: var(--on-deep); background: rgba(255,255,255,.09); }
+.top .btn { padding: 11px 18px; font-size: 0.88rem; }
+.progress { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--mint), var(--amber)); }
+.burger { display: none; background: transparent; border: 0; color: var(--on-deep); padding: 8px; cursor: pointer; }
+.mnav { position: fixed; inset: 0; z-index: 25; background: var(--deep); color: var(--on-deep); padding: calc(env(safe-area-inset-top, 0px) + 84px) var(--gr) 32px var(--gl); display: grid; align-content: start; gap: 6px; }
+.mnav a { font: 700 1.8rem/1.2 var(--f-display); text-decoration: none; padding-block: 10px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.mnav .btn { margin-top: 24px; justify-self: start; font: 600 1rem/1 var(--f-body); border: 0; }
+@media (max-width: 980px) { .nav, .top .wrap > .btn { display: none; } .burger { display: inline-flex; } }
 
 /* Hero */
-.hero { padding-block: clamp(56px, 8vw, 104px) clamp(40px, 5vw, 64px); }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
-.hero h1 { font-size: clamp(2.5rem, 5.8vw, 4.5rem); margin-top: 18px; }
-.hero h1 em { font-style: normal; color: var(--moss); }
-.hero .lead { margin-top: 24px; }
-.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.why-now { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: 26px 26px 10px; }
-.why-now .eyebrow { color: var(--ochre); }
-.why-now h2 { font-size: 1.35rem; margin: 10px 0 6px; letter-spacing: -0.01em; }
-.why-now ol { list-style: none; margin: 0; padding: 0; }
-.why-now li { padding-block: 16px; border-top: 1px solid var(--line); display: grid; gap: 4px; }
-.why-now li:first-child { border-top: 0; }
-.why-now b { font-weight: 600; }
-.why-now span { color: var(--muted); font-size: 0.95rem; }
-.ledger { border-top: 2px solid var(--ink); margin-top: clamp(40px, 6vw, 64px); display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0 32px; }
-.ledger div { display: grid; grid-template-columns: 5.5rem minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--line); align-items: baseline; }
-.ledger b { font: 500 1.8rem/1 var(--f-display); font-variant-numeric: tabular-nums; color: var(--moss); }
-.ledger span { color: var(--muted); font-size: 0.95rem; }
+.hero { background: radial-gradient(1200px 600px at 85% 20%, var(--deep-2), transparent 70%), var(--deep); color: var(--on-deep); padding-block: calc(clamp(120px, 14vw, 170px) + env(safe-area-inset-top, 0px)) clamp(56px, 7vw, 88px); overflow: hidden; }
+.hero canvas { position: absolute; top: 0; right: 0; width: 58%; height: 100%; display: block; }
+.hero .wrap { position: relative; z-index: 1; }
+.hero .eyebrow { color: var(--mint); }
+.hero h1 { font-size: clamp(2.7rem, 7vw, 5.6rem); font-weight: 800; margin-top: 22px; max-width: 13ch; letter-spacing: -0.035em; }
+.hero h1 em { font-style: normal; background: linear-gradient(95deg, var(--mint) 10%, var(--amber) 95%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero .lead { color: var(--on-deep-muted); margin-top: 26px; max-width: 54ch; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+.map-tag { position: absolute; z-index: 1; right: max(var(--gr), calc((100vw - var(--wrap)) / 2 + 16px)); bottom: 34%; font: 500 0.72rem/1.4 var(--f-mono); color: var(--on-deep-muted); letter-spacing: 0.08em; text-transform: uppercase; text-align: right; }
+.map-tag b { display: block; color: var(--on-deep); font: 700 1.1rem/1.2 var(--f-display); letter-spacing: -0.01em; text-transform: none; }
+.stats { margin-top: clamp(56px, 8vw, 96px); display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.stat { padding: 22px 24px; border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.stat b { display: block; font: 800 clamp(2.2rem, 4vw, 3rem)/1 var(--f-display); letter-spacing: -0.03em; color: var(--on-deep); font-variant-numeric: tabular-nums; }
+.stat b i { font-style: normal; color: var(--mint); }
+.stat > span { display: block; margin-top: 10px; color: var(--on-deep-muted); font-size: 0.93rem; }
 @media (max-width: 860px) {
-  .hero-grid { grid-template-columns: minmax(0,1fr); }
-  .ledger { grid-template-columns: minmax(0,1fr); }
+  .hero canvas { width: 100%; opacity: .45; }
+  .map-tag { display: none; }
+  .stats { grid-template-columns: minmax(0,1fr); }
 }
 
-/* Valore della sostenibilità */
-#valore { background: var(--surface); border-block: 1px solid var(--line); }
-.levers { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border-top: 2px solid var(--ink); }
-.lever { padding: 28px 28px 30px 0; border-bottom: 1px solid var(--line); display: grid; gap: 10px; align-content: start; }
-.lever:not(:nth-child(3n+1)) { padding-left: 28px; border-left: 1px solid var(--line); }
-.lever .k { font: 500 0.75rem/1 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--moss); }
-.lever h3 { font-size: 1.3rem; letter-spacing: -0.01em; }
-.lever p { color: var(--muted); font-size: 0.97rem; }
-.lever .kpi { margin-top: 4px; font: 400 0.8rem/1.45 var(--f-mono); color: var(--ink); background: var(--chip); border-radius: 8px; padding: 8px 10px; }
+/* Perché adesso */
+.why { padding-block: 0; margin-top: -1px; }
+.why-card { position: relative; z-index: 2; margin-top: calc(-1 * clamp(28px, 4vw, 44px)); background: var(--surface); border-radius: 22px; box-shadow: var(--shadow); display: grid; grid-template-columns: minmax(0, 0.9fr) repeat(3, minmax(0, 1fr)); overflow: hidden; }
+.why-card > div { padding: 28px 26px; }
+.why-card > div + div { border-left: 1px solid var(--line); }
+.why-card .eyebrow { color: var(--amber); }
+.why-card .eyebrow::before { background: var(--amber); }
+.why-card h2 { font-size: 1.45rem; margin-top: 12px; }
+.why-card .ico { color: var(--moss); width: 30px; height: 30px; }
+.why-card h3 { font-size: 1.1rem; margin: 14px 0 6px; letter-spacing: -0.01em; }
+.why-card p { color: var(--muted); font-size: 0.94rem; }
 @media (max-width: 900px) {
-  .levers { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .lever, .lever:not(:nth-child(3n+1)) { padding: 24px 0; border-left: 0; }
-  .lever:nth-child(2n) { padding-left: 24px; border-left: 1px solid var(--line); }
+  .why-card { grid-template-columns: minmax(0,1fr); }
+  .why-card > div + div { border-left: 0; border-top: 1px solid var(--line); }
 }
-@media (max-width: 600px) {
-  .levers { grid-template-columns: minmax(0,1fr); }
-  .lever:nth-child(2n) { padding-left: 0; border-left: 0; }
-}
-.context { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr); gap: 32px; }
+
+/* Valore */
+.levers { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+.lever { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: grid; gap: 12px; align-content: start; grid-template-rows: auto auto 1fr auto; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.lever:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: transparent; }
+.lever-top { display: flex; align-items: center; justify-content: space-between; }
+.lever-ic { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center; background: var(--tint); color: var(--moss); transition: background .25s, color .25s; }
+.lever:hover .lever-ic { background: var(--moss); color: var(--surface); }
+.lever .k { font: 500 0.72rem/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.lever h3 { font-size: 1.35rem; margin-top: 8px; }
+.lever p { color: var(--muted); font-size: 0.97rem; }
+.lever .kpi { display: flex; gap: 8px; align-items: baseline; margin-top: 6px; padding-top: 14px; border-top: 1px dashed var(--line); font: 400 0.8rem/1.45 var(--f-mono); color: var(--ink); }
+.lever .kpi::before { content: "KPI"; flex: none; font-weight: 500; font-size: 0.68rem; padding: 3px 6px; border-radius: 5px; background: var(--amber); color: #1b1407; }
+@media (max-width: 960px) { .levers { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 620px) { .levers { grid-template-columns: minmax(0,1fr); } }
+.context { margin-top: 56px; border-radius: 22px; background: var(--tint); padding: clamp(24px, 4vw, 40px); display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 2fr); gap: 32px; }
 .context h3 { font-size: 1.5rem; }
 .context dl { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px 32px; }
-.context dt { font-weight: 600; }
-.context dd { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; }
+.context dt { font-weight: 600; display: flex; gap: 8px; align-items: center; }
+.context dt::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--moss); flex: none; }
+.context dd { margin: 4px 0 0 16px; color: var(--muted); font-size: 0.95rem; }
 @media (max-width: 760px) { .context, .context dl { grid-template-columns: minmax(0,1fr); } }
 
-/* Check-up ESG */
-#checkup .intro-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 32px; align-items: end; margin-bottom: 40px; }
-#checkup h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 14px; }
-.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.badges span { font: 500 0.78rem/1 var(--f-mono); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--moss); color: var(--moss); }
-.ck { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; align-items: start; }
-.ck-info { display: grid; gap: 32px; align-content: start; }
-.ck-info .btn { justify-self: start; }
-.ck-group h3 { font: 500 0.8rem/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--moss); padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
-.ck-list { list-style: none; margin: 0; padding: 0; }
-.ck-list li { display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 1fr); gap: 6px 24px; padding-block: 16px; border-bottom: 1px solid var(--line); }
-.ck-list b { font-weight: 600; }
-.ck-list span { color: var(--muted); font-size: 0.96rem; }
-.ck-steps { margin: 0; padding: 14px 0 0 22px; display: grid; gap: 10px; }
-.ck-steps li::marker { color: var(--moss); font-family: var(--f-mono); }
-@media (max-width: 600px) { .ck-list li { grid-template-columns: minmax(0,1fr); } }
+/* Check-up */
+#checkup { background: var(--deep); color: var(--on-deep); overflow: hidden; }
+#checkup::before { content: ""; position: absolute; width: 720px; height: 720px; max-width: 100%; right: -160px; top: -240px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--mint) 22%, transparent), transparent 65%); pointer-events: none; }
+#checkup .eyebrow { color: var(--amber); }
+#checkup .lead { color: var(--on-deep-muted); }
+.free { display: inline-block; font: 800 0.95rem/1 var(--f-display); padding: 8px 14px; border-radius: 999px; background: var(--amber); color: #1b1407; transform: rotate(-3deg); margin-left: 8px; vertical-align: middle; letter-spacing: 0; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.badges span { display: inline-flex; align-items: center; gap: 8px; font: 500 0.8rem/1 var(--f-mono); padding: 9px 13px; border-radius: 999px; background: rgba(255,255,255,.07); color: var(--on-deep); }
+.badges span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--mint); }
+.ck { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 28px; align-items: start; position: relative; }
+.ck-info { display: grid; gap: 12px; }
+.ck-item { display: grid; grid-template-columns: 44px minmax(0,1fr); gap: 16px; padding: 18px 20px; border-radius: 16px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); transition: background .2s, border-color .2s; }
+.ck-item:hover { background: rgba(255,255,255,.07); border-color: rgba(127,224,180,.35); }
+.ck-item .n { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: color-mix(in srgb, var(--mint) 16%, transparent); color: var(--mint); }
+.ck-item b { display: block; font-weight: 600; }
+.ck-item span { color: var(--on-deep-muted); font-size: 0.94rem; }
+.how { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin-top: 16px; counter-reset: h; }
+.how li { list-style: none; counter-increment: h; padding: 16px; border-radius: 14px; border: 1px dashed rgba(255,255,255,.18); font-size: 0.9rem; color: var(--on-deep-muted); }
+.how li::before { content: "Passo " counter(h); display: block; font: 500 0.7rem/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; }
+.how { padding: 0; margin-bottom: 0; }
+.ck-info .btn { justify-self: start; margin-top: 16px; }
+@media (max-width: 620px) { .how { grid-template-columns: minmax(0,1fr); } }
 
-.ck-res { border-radius: 18px; background: var(--band); color: var(--band-ink); padding: 28px; display: grid; gap: 20px; }
-.ck-res .eyebrow { color: var(--ochre); }
+.ck-res { background: var(--surface); color: var(--ink); border-radius: 24px; padding: 28px; display: grid; gap: 20px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); position: sticky; top: calc(env(safe-area-inset-top, 0px) + 90px); }
+.ck-res .res-h { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.ck-res .res-h .eyebrow::before { display: none; }
+.ck-res .dot3 { display: flex; gap: 6px; }
+.ck-res .dot3 i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
 .score { display: flex; align-items: center; gap: 18px; }
 .score svg { flex: none; }
-.ring-bg { fill: none; stroke: color-mix(in srgb, var(--band-ink) 15%, transparent); stroke-width: 9; }
-.ring-fg { fill: none; stroke: var(--ochre); stroke-width: 9; stroke-linecap: round; transition: stroke-dasharray .4s ease; }
-.ring-num { fill: var(--band-ink); font: 700 26px var(--f-display); }
-.ring-sub { fill: var(--band-muted); font: 400 10px var(--f-mono); }
-.score b { display: block; font: 700 1.35rem/1.15 var(--f-display); }
-.score span { color: var(--band-muted); font-size: 0.9rem; }
-.meters { display: grid; gap: 12px; }
-.meter { display: grid; grid-template-columns: 6.5rem minmax(0,1fr) 2.6rem; gap: 10px; align-items: center; font-size: 0.88rem; }
-.meter i { position: relative; display: block; height: 6px; border-radius: 6px; background: color-mix(in srgb, var(--band-ink) 15%, transparent); overflow: hidden; }
-.meter i::after { content: ""; display: block; height: 100%; width: var(--w, 0%); background: var(--band-ink); border-radius: 6px; transition: width .4s ease; }
-.meter s { position: absolute; top: -3px; bottom: -3px; left: var(--b); width: 2px; background: var(--ochre); text-decoration: none; }
-.legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 0.8rem; color: var(--band-muted); }
-.lg-you, .lg-bm { display: inline-block; width: 14px; height: 6px; border-radius: 4px; background: var(--band-ink); }
-.lg-bm { width: 2px; height: 12px; background: var(--ochre); margin-left: 8px; }
-.meter em { font: 500 0.82rem/1 var(--f-mono); font-style: normal; text-align: right; font-variant-numeric: tabular-nums; color: var(--band-muted); }
-.urg { font: 500 0.8rem/1.4 var(--f-mono); padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--ochre) 18%, transparent); color: var(--band-ink); }
-.prio h4 { margin: 0 0 8px; font: 600 0.95rem/1.3 var(--f-body); }
-.prio ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--band-muted); font-size: 0.92rem; }
-.prio ol li::marker { color: var(--ochre); font-family: var(--f-mono); }
-.ck-res .btn { background: var(--ochre); border-color: var(--ochre); color: #14110a; justify-self: start; }
-.ck-res .fine { font-size: 0.78rem; color: var(--band-muted); }
-@media (max-width: 900px) { #checkup .intro-grid, .ck { grid-template-columns: minmax(0,1fr); } }
+.ring-bg { fill: none; stroke: var(--tint); stroke-width: 10; }
+.ring-fg { fill: none; stroke: url(#rg); stroke-width: 10; stroke-linecap: round; transition: stroke-dasharray 1.4s cubic-bezier(.2,.8,.2,1); }
+.ring-num { fill: var(--ink); font: 800 28px var(--f-display); }
+.ring-sub { fill: var(--muted); font: 400 10px var(--f-mono); }
+.score b { display: inline-block; font: 700 1.3rem/1.15 var(--f-display); padding: 4px 10px; border-radius: 8px; background: var(--tint); color: var(--moss); }
+.score span { display: block; margin-top: 8px; color: var(--muted); font-size: 0.88rem; }
+.meters { display: grid; gap: 14px; }
+.meter { display: grid; grid-template-columns: 6.5rem minmax(0,1fr) 2.2rem; gap: 10px; align-items: center; font-size: 0.88rem; }
+.meter i { position: relative; display: block; height: 8px; border-radius: 8px; background: var(--tint); }
+.meter i::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--w, 0%); background: linear-gradient(90deg, var(--moss), var(--mint)); border-radius: 8px; transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+.ck-res.pre .meter i::after { width: 0; }
+.meter s { position: absolute; z-index: 1; top: -4px; bottom: -4px; left: var(--b); width: 3px; border-radius: 2px; background: var(--amber); text-decoration: none; }
+.meter em { font: 600 0.85rem/1 var(--f-mono); font-style: normal; text-align: right; font-variant-numeric: tabular-nums; }
+.legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 0.8rem; color: var(--muted); }
+.lg-you { display: inline-block; width: 16px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, var(--moss), var(--mint)); }
+.lg-bm { display: inline-block; width: 3px; height: 14px; border-radius: 2px; background: var(--amber); margin-left: 8px; }
+.urg { display: flex; gap: 10px; align-items: flex-start; font-size: 0.9rem; padding: 12px 14px; border-radius: 12px; background: color-mix(in srgb, var(--amber) 18%, var(--surface)); }
+.urg::before { content: "!"; flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--amber); color: #1b1407; font: 800 0.8rem/1 var(--f-display); }
+.prio h4 { font-size: 1rem; margin-bottom: 10px; letter-spacing: -0.01em; }
+.prio ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; counter-reset: p; }
+.prio li { counter-increment: p; display: grid; grid-template-columns: 26px minmax(0,1fr); gap: 10px; font-size: 0.92rem; color: var(--muted); }
+.prio li::before { content: counter(p); width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; background: var(--ink); color: var(--surface); font: 600 0.8rem/1 var(--f-mono); }
+.fine { font-size: 0.76rem; color: var(--muted); }
+@media (max-width: 900px) { .ck { grid-template-columns: minmax(0,1fr); } .ck-res { position: static; } }
 
-/* Prossimità */
-.prox-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: clamp(32px, 5vw, 80px); }
-.prox-grid h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 14px; }
-.prox-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 28px 32px; }
-.prox-list h3 { font-size: 1.15rem; letter-spacing: -0.01em; margin-bottom: 6px; }
-.prox-list p { color: var(--muted); font-size: 0.98rem; }
-@media (max-width: 820px) { .prox-grid, .prox-list { grid-template-columns: minmax(0,1fr); } }
-
-/* Servizi */
-#servizi { background: var(--surface); border-block: 1px solid var(--line); }
-.sec-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 48px; }
-.sec-head h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 14px; max-width: 18ch; }
-.sec-head .lead { max-width: 46ch; font-size: 1.05rem; }
-
-.svc-fig { margin-top: 22px; width: 100%; max-width: 260px; height: auto; color: var(--moss); }
-.svc-fig .ln { stroke: var(--line); }
-.svc-fig .tx { fill: var(--muted); font: 500 10px var(--f-mono); }
-.svc-fig .ac { fill: var(--moss); }
-.svc-fig .oc { fill: var(--ochre); }
-.svc-fig .sf { fill: var(--chip); stroke: var(--moss); }
-
-.services { display: grid; gap: 0; border-top: 2px solid var(--ink); }
-.svc {
-  display: grid; grid-template-columns: 4.5rem minmax(0, 1.1fr) minmax(0, 1.4fr); gap: 16px 32px;
-  padding-block: 36px; border-bottom: 1px solid var(--line); transition: background .2s ease, opacity .2s ease;
-}
-.svc .code { font: 500 0.85rem/1.4 var(--f-mono); color: var(--muted); padding-top: 6px; }
-.svc h3 { font-size: clamp(1.45rem, 2.4vw, 1.9rem); }
-.svc .for { margin-top: 10px; font: 400 0.82rem/1.4 var(--f-mono); color: var(--moss); letter-spacing: 0.04em; }
-.svc .intro { margin-top: 14px; color: var(--muted); }
-.svc ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
-.svc li { padding-left: 22px; position: relative; }
-.svc li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 10px; height: 2px; background: var(--moss); }
-.svc .out { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 0.95rem; }
-.svc .out b { font-weight: 600; }
-@media (max-width: 860px) {
+/* Servizi a schede */
+.tabs { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; }
+.tab { text-align: left; font: inherit; color: var(--ink); cursor: pointer; padding: 18px 20px; border-radius: 18px; border: 1px solid var(--line); background: var(--surface); display: grid; gap: 10px; transition: background .2s, color .2s, border-color .2s, transform .2s; }
+.tab:hover { transform: translateY(-2px); border-color: var(--moss); }
+.tab .tl { display: flex; align-items: center; justify-content: space-between; font: 500 0.75rem/1 var(--f-mono); letter-spacing: 0.12em; color: var(--muted); }
+.tab .tl .ico { width: 22px; height: 22px; color: var(--moss); }
+.tab b { font: 700 1.12rem/1.2 var(--f-display); letter-spacing: -0.01em; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tab[aria-selected="true"] .tl, .tab[aria-selected="true"] .tl .ico { color: var(--mint); }
+.panels { margin-top: 18px; }
+.svc { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: clamp(24px, 4vw, 44px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 32px 56px; }
+.js .svc { animation: fadeUp .45s ease both; }
+.svc + .svc { margin-top: 18px; }
+.js .svc + .svc { margin-top: 0; }
+.svc .code { font: 500 0.78rem/1 var(--f-mono); letter-spacing: 0.12em; color: var(--moss); }
+.svc h3 { font-size: clamp(1.7rem, 3vw, 2.4rem); margin-top: 12px; }
+.svc .for { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.svc .for span { font: 500 0.78rem/1 var(--f-mono); padding: 7px 10px; border-radius: 999px; background: var(--tint); color: var(--moss); }
+.svc .intro { margin-top: 18px; color: var(--muted); }
+.svc ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.svc li { display: grid; grid-template-columns: 26px minmax(0,1fr); gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.svc li::before { content: ""; width: 20px; height: 20px; margin-top: 3px; border-radius: 6px; background: var(--tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='%2323805a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; }
+.svc .out { margin-top: 20px; padding: 16px 18px; border-radius: 14px; background: var(--deep); color: var(--on-deep); font-size: 0.96rem; }
+.svc .out b { color: var(--amber); }
+@media (max-width: 900px) {
+  .tabs { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .svc { grid-template-columns: minmax(0,1fr); }
-  .svc .code { padding-top: 0; }
 }
+@keyframes fadeUp { from { opacity: .2; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* Approccio */
+#approccio { background: var(--surface); border-block: 1px solid var(--line); }
+.prox { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.prox .lead { margin-top: 20px; }
+.prox-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.prox-list > div { padding: 24px; border-radius: 18px; background: var(--paper); border: 1px solid var(--line); display: grid; gap: 8px; align-content: start; }
+.prox-list .ico { color: var(--moss); width: 30px; height: 30px; margin-bottom: 6px; }
+.prox-list h3 { font-size: 1.15rem; letter-spacing: -0.01em; }
+.prox-list p { color: var(--muted); font-size: 0.95rem; }
+@media (max-width: 860px) { .prox, .prox-list { grid-template-columns: minmax(0,1fr); } }
 
 /* Casi */
-.cases { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; margin-top: 48px; }
-.case { border: 1px solid var(--line); border-radius: 14px; padding: 26px; background: var(--surface); display: grid; gap: 12px; align-content: start; }
-.case .tag { font: 500 0.75rem/1 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.case h3 { font-size: 1.3rem; letter-spacing: -0.01em; }
-.case dl { margin: 4px 0 0; display: grid; gap: 10px; }
-.case dt { font: 500 0.78rem/1.2 var(--f-mono); color: var(--moss); text-transform: uppercase; letter-spacing: 0.08em; }
-.case dd { margin: 2px 0 0; color: var(--muted); font-size: 0.97rem; }
+.cases { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+.case { border-radius: 22px; background: var(--surface); border: 1px solid var(--line); overflow: hidden; display: grid; grid-template-rows: auto 1fr; transition: transform .25s, box-shadow .25s; }
+.case:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.case-h { padding: 24px 26px 20px; background: linear-gradient(135deg, var(--tint), transparent); border-bottom: 1px solid var(--line); }
+.case .tag { display: inline-block; font: 500 0.72rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; background: var(--surface); color: var(--moss); border: 1px solid var(--line); }
+.case h3 { font-size: 1.45rem; margin-top: 14px; }
+.case dl { margin: 0; padding: 22px 26px 26px; display: grid; gap: 0; }
+.case dl > div { position: relative; padding: 0 0 18px 26px; }
+.case dl > div:last-child { padding-bottom: 0; }
+.case dl > div::before { content: ""; position: absolute; left: 4px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--moss); }
+.case dl > div:last-child::before { background: var(--moss); }
+.case dl > div:not(:last-child)::after { content: ""; position: absolute; left: 9px; top: 20px; bottom: 2px; width: 2px; background: var(--line); }
+.case dt { font: 500 0.72rem/1.2 var(--f-mono); color: var(--moss); text-transform: uppercase; letter-spacing: 0.1em; }
+.case dd { margin: 4px 0 0; color: var(--muted); font-size: 0.96rem; }
 .note { margin-top: 20px; font-size: 0.85rem; color: var(--muted); }
 @media (max-width: 760px) { .cases { grid-template-columns: minmax(0,1fr); } }
 
-/* Metodo (fascia scura) */
-.band { background: var(--band); color: var(--band-ink); }
-.band .eyebrow { color: var(--ochre); }
-.band h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 14px; max-width: 20ch; }
-.steps { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 28px; counter-reset: s; }
-.steps li { border-top: 1px solid color-mix(in srgb, var(--band-ink) 30%, transparent); padding-top: 18px; counter-increment: s; }
-.steps li::before { content: "Fase " counter(s); display: block; font: 500 0.78rem/1 var(--f-mono); color: var(--ochre); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
-.steps h3 { font-size: 1.2rem; margin-bottom: 8px; }
-.steps p { color: var(--band-muted); font-size: 0.95rem; }
-.steps .t { display: block; margin-top: 10px; font: 400 0.8rem/1.3 var(--f-mono); color: var(--band-muted); }
-@media (max-width: 900px) { .steps { grid-template-columns: repeat(2, minmax(0,1fr)); } }
-@media (max-width: 520px) { .steps { grid-template-columns: minmax(0,1fr); } }
+/* Metodo */
+#metodo { background: linear-gradient(180deg, var(--paper), var(--tint)); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; position: relative; counter-reset: s; }
+.steps::before { content: ""; position: absolute; left: 30px; right: 30px; top: 29px; height: 2px; background: repeating-linear-gradient(90deg, var(--moss) 0 8px, transparent 8px 14px); }
+.steps li { counter-increment: s; position: relative; }
+.steps li::before { content: counter(s); position: relative; z-index: 1; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--paper); font: 800 1.5rem/1 var(--f-display); box-shadow: 0 0 0 8px var(--paper); }
+.steps li:last-child::before { background: var(--amber); color: #1b1407; }
+.steps h3 { font-size: 1.3rem; margin: 22px 0 8px; }
+.steps p { color: var(--muted); font-size: 0.96rem; }
+.steps .t { display: inline-block; margin-top: 12px; font: 500 0.76rem/1.3 var(--f-mono); padding: 6px 10px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .steps { grid-template-columns: minmax(0,1fr); gap: 28px; }
+  .steps::before { left: 29px; right: auto; top: 30px; bottom: 30px; width: 2px; height: auto; background: repeating-linear-gradient(180deg, var(--moss) 0 8px, transparent 8px 14px); }
+  .steps li { padding-left: 84px; }
+  .steps li::before { position: absolute; left: 0; top: 0; }
+  .steps h3 { margin-top: 12px; }
+}
 
 /* Profilo */
-.profile { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: clamp(32px, 5vw, 80px); }
-.portrait {
-  aspect-ratio: 4 / 5; max-width: 100%; border-radius: 16px; background: var(--chip); border: 1px solid var(--line);
-  display: grid; place-items: center; font: 700 clamp(4rem, 10vw, 7rem)/1 var(--f-display); color: var(--moss); letter-spacing: -0.04em;
-}
-.portrait-cap { margin-top: 12px; font: 400 0.82rem/1.4 var(--f-mono); color: var(--muted); }
-.profile h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 14px; }
+.profile { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.portrait { position: relative; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 28px; overflow: hidden; background: radial-gradient(circle at 30% 20%, var(--mint), transparent 55%), radial-gradient(circle at 80% 90%, var(--amber), transparent 50%), var(--moss); display: grid; place-items: center; }
+.portrait span { font: 800 clamp(5rem, 12vw, 8rem)/1 var(--f-display); color: var(--deep); letter-spacing: -0.05em; mix-blend-mode: multiply; opacity: .75; }
+.portrait-cap { margin-top: 14px; font: 400 0.82rem/1.4 var(--f-mono); color: var(--muted); }
 .profile .bio { margin-top: 22px; display: grid; gap: 16px; max-width: 64ch; }
-.timeline { margin-top: 36px; border-top: 2px solid var(--ink); }
-.timeline div { display: grid; grid-template-columns: 9rem minmax(0,1fr); gap: 20px; padding-block: 16px; border-bottom: 1px solid var(--line); }
-.timeline .yrs { font: 500 0.85rem/1.5 var(--f-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.timeline { margin-top: 36px; display: grid; gap: 10px; }
+.timeline > div { display: grid; grid-template-columns: 7.5rem minmax(0,1fr); gap: 20px; padding: 16px 18px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.timeline .yrs { font: 500 0.8rem/1.6 var(--f-mono); color: var(--moss); }
+.timeline > div:first-child { background: var(--deep); color: var(--on-deep); border-color: var(--deep); }
+.timeline > div:first-child .yrs { color: var(--amber); }
+.timeline > div:first-child span:not(.yrs) { color: var(--on-deep-muted); }
 .timeline b { display: block; font-weight: 600; }
-.timeline span { color: var(--muted); font-size: 0.95rem; }
-.skills { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px; }
-.skills span { font-size: 0.85rem; padding: 6px 12px; border-radius: 999px; background: var(--chip); }
-@media (max-width: 820px) {
+.timeline span { color: var(--muted); font-size: 0.94rem; }
+.skills { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+.skills span { font-size: 0.85rem; padding: 7px 13px; border-radius: 999px; background: var(--tint); color: var(--ink); }
+@media (max-width: 860px) {
   .profile { grid-template-columns: minmax(0,1fr); }
-  .portrait { max-width: 320px; }
-  .timeline div { grid-template-columns: minmax(0,1fr); gap: 4px; }
+  .portrait { max-width: 280px; }
+  .timeline > div { grid-template-columns: minmax(0,1fr); gap: 4px; }
 }
 
 /* Contatti */
-#contatti { background: var(--surface); border-top: 1px solid var(--line); }
-.contact { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); gap: clamp(32px, 5vw, 80px); }
-.contact h2 { font-size: clamp(2rem, 4.4vw, 3.3rem); margin-top: 14px; }
-.contact .lead { margin-top: 18px; }
-.direct { margin-top: 28px; display: grid; gap: 10px; }
-.direct div { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-.direct .k { font: 500 0.78rem/1 var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; width: 6.5rem; }
-.direct .v { font-weight: 600; user-select: all; }
-.copy { font: 500 0.78rem/1 var(--f-mono); background: transparent; color: var(--moss); border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; cursor: pointer; }
-form.f { display: grid; gap: 16px; }
+#contatti { background: var(--deep); color: var(--on-deep); overflow: hidden; }
+#contatti::before { content: ""; position: absolute; width: 600px; height: 600px; max-width: 100%; left: -200px; bottom: -300px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--amber) 20%, transparent), transparent 65%); pointer-events: none; }
+#contatti .eyebrow { color: var(--mint); }
+#contatti .lead { color: var(--on-deep-muted); margin-top: 18px; }
+.contact { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); gap: clamp(32px, 6vw, 80px); align-items: start; position: relative; }
+.direct { margin-top: 32px; display: grid; gap: 10px; }
+.direct > div { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+.direct .k { font: 500 0.72rem/1 var(--f-mono); color: var(--on-deep-muted); text-transform: uppercase; letter-spacing: 0.12em; width: 5.5rem; }
+.direct .v { font-weight: 600; user-select: all; text-decoration: none; }
+.copy { margin-left: auto; font: 500 0.76rem/1 var(--f-mono); background: transparent; color: var(--mint); border: 1px solid rgba(127,224,180,.4); border-radius: 999px; padding: 7px 11px; cursor: pointer; }
+form.f { display: grid; gap: 16px; background: var(--surface); color: var(--ink); padding: clamp(22px, 4vw, 36px); border-radius: 24px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); }
+.f h3 { font-size: 1.4rem; }
 .f .row { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
-.f label { display: grid; gap: 6px; font-size: 0.88rem; font-weight: 500; }
-.f input, .f select, .f textarea {
-  font: 400 1rem/1.4 var(--f-body); color: var(--ink); background: var(--paper);
-  border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; width: 100%;
-}
-.f textarea { min-height: 130px; resize: vertical; }
+.f label { display: grid; gap: 6px; font-size: 0.86rem; font-weight: 500; }
+.f input, .f select, .f textarea { font: 400 1rem/1.4 var(--f-body); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px; width: 100%; }
+.f textarea { min-height: 120px; resize: vertical; }
 .f input:focus, .f select:focus, .f textarea:focus { outline: 2px solid var(--moss); outline-offset: 1px; }
-.f .msg { font-size: 0.92rem; color: var(--moss); min-height: 1.4em; }
-@media (max-width: 820px) { .contact { grid-template-columns: minmax(0,1fr); } }
+.f .msg { font-size: 0.9rem; color: var(--moss); min-height: 1.4em; }
+@media (max-width: 860px) { .contact { grid-template-columns: minmax(0,1fr); } }
 @media (max-width: 520px) { .f .row { grid-template-columns: minmax(0,1fr); } }
 
-footer { padding-block: 32px; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); }
+footer { background: var(--deep); color: var(--on-deep-muted); padding-block: 28px; border-top: 1px solid rgba(255,255,255,.07); font-size: 0.85rem; }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+/* CTA mobile */
+.fab { position: fixed; z-index: 15; right: calc(var(--gr) + env(safe-area-inset-right, 0px) * 0); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: none; box-shadow: 0 12px 28px -10px rgba(0,0,0,.45); transition: transform .3s ease, opacity .3s ease; }
+.fab.hide { transform: translateY(120%); opacity: 0; pointer-events: none; }
+@media (max-width: 980px) { .fab { display: inline-flex; } }
+
+/* Comparsa in scorrimento: parte da uno stato visibile */
+.js .rv { transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .7s ease; }
+.js .rv.below { transform: translateY(24px); opacity: .25; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .js .rv.below { transform: none; opacity: 1; }
+}
 </style>
 </head>
 <body>
 
-<header class="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#23805a"/><stop offset="1" stop-color="#7fe0b4"/></linearGradient>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20.5h18"/></symbol>
+    <symbol id="i-chain" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.5 6h9M6.3 8.2l4.4 7.6M17.7 8.2l-4.4 7.6"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2.5h8.5L19 7v14.5H6z"/><path d="M14 2.5V7h5M9 12h7M9 15.5h7M9 19h4"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M16 14.3c3 .1 5 2.3 5 5.7"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M4 7h16M7 7l-3 7h6zM17 7l-3 7h6z"/></symbol>
+    <symbol id="i-bridge" viewBox="0 0 24 24"><path d="M2 18h20M3.5 18c0-5 3.8-9 8.5-9s8.5 4 8.5 9M8 18v-6.5M16 18v-6.5M12 18V9"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-5"/></symbol>
+    <symbol id="i-bars" viewBox="0 0 24 24"><path d="M4 20h16M7 16V9M12 16V5M17 16v-4"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19l7-7"/></symbol>
+    <symbol id="i-org" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/></symbol>
+    <symbol id="i-plan" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M7 15l4-4 3 3 5-6"/></symbol>
+    <symbol id="i-deal" viewBox="0 0 24 24"><circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  </defs>
+</svg>
+
+<header class="top" id="top-bar">
   <div class="wrap">
-    <a class="brand" href="#top">Consulting<span>4</span>Partners</a>
-    <nav class="main" aria-label="Sezioni">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">4</span><span>Consulting<b>4</b>Partners</span></a>
+    <nav class="nav" aria-label="Sezioni">
       <a href="#valore">Valore ESG</a>
-      <a href="#checkup">Check-up gratuito</a>
+      <a href="#checkup">Check-up</a>
       <a href="#servizi">Servizi</a>
       <a href="#casi">Casi</a>
       <a href="#metodo">Metodo</a>
       <a href="#profilo">Profilo</a>
+      <a href="#contatti">Contatti</a>
     </nav>
-    <a class="btn" href="#checkup">Check-up gratuito</a>
+    <a class="btn" href="#contatti" data-checkup>Richiedi il check-up</a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Apri il menu"><svg class="ico"><use href="#i-menu"/></svg></button>
   </div>
+  <div class="progress" id="progress"></div>
 </header>
+
+<nav class="mnav" id="mnav" aria-label="Menu" hidden>
+  <a href="#valore">Valore ESG</a>
+  <a href="#checkup">Check-up gratuito</a>
+  <a href="#servizi">Servizi</a>
+  <a href="#casi">Casi</a>
+  <a href="#metodo">Metodo</a>
+  <a href="#profilo">Profilo</a>
+  <a href="#contatti">Contatti</a>
+  <a class="btn" href="#contatti" data-checkup>Richiedi il check-up gratuito</a>
+</nav>
 
 <main id="top">
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Consulenza per PMI · Sostenibilità e valore d'impresa</p>
-      <h1>Aumentiamo il valore delle PMI italiane attraverso la <em>sostenibilità</em>.</h1>
-      <p class="lead">La sostenibilità oggi pesa sul rating bancario, sulla permanenza nelle filiere dei grandi clienti, sull'accesso a bandi e sul prezzo di un'azienda quando entra un socio o un fondo. Aiuto le PMI a trasformarla da adempimento a leva di valore, con dati misurati, un benchmark su oltre 1.300 aziende mappate e un piano concreto.</p>
-      <div class="ctas">
-        <a class="btn" href="#checkup">Scopri il check-up ESG gratuito</a>
-        <a class="btn ghost" href="#valore">Perché conviene</a>
-      </div>
-    </div>
-    <aside class="why-now" aria-labelledby="why-h">
-      <p class="eyebrow">Perché adesso</p>
-      <h2 id="why-h">Chi valuta la tua impresa guarda già l'ESG</h2>
-      <ol>
-        <li><b>Le banche</b><span>Le linee guida EBA sulla concessione del credito chiedono di considerare i fattori ESG nella valutazione del cliente.</span></li>
-        <li><b>I grandi clienti</b><span>Le imprese soggette a rendicontazione chiedono ai fornitori dati su emissioni, persone e governance.</span></li>
-        <li><b>Investitori e acquirenti</b><span>Fondi e compratori inseriscono l'analisi ESG nella due diligence: i rischi non gestiti diventano sconti sul prezzo.</span></li>
-      </ol>
-    </aside>
-  </div>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <p class="map-tag" aria-hidden="true"><b>1.300+ aziende</b>mappate nel nostro benchmark</p>
   <div class="wrap">
-    <div class="ledger" aria-label="In sintesi">
-      <div><b>20+</b><span>anni di consulenza direzionale, finanziaria e organizzativa</span></div>
-      <div><b>1.300+</b><span>aziende mappate per benchmark per settore, dimensione, territorio e tema ESG</span></div>
-      <div><b>1:1</b><span>un interlocutore senior dall'analisi all'attuazione, senza passaggi di mano</span></div>
+    <p class="eyebrow">Consulenza per PMI · Sostenibilità e valore d'impresa</p>
+    <h1>Aumentiamo il valore delle PMI italiane attraverso la <em>sostenibilità</em>.</h1>
+    <p class="lead">La sostenibilità oggi pesa sul rating bancario, sulla permanenza nelle filiere dei grandi clienti, sull'accesso a bandi e sul prezzo di un'azienda quando entra un socio o un fondo. Aiuto le PMI a trasformarla da adempimento a leva di valore, con dati misurati, un benchmark su oltre 1.300 aziende mappate e un piano concreto.</p>
+    <div class="ctas">
+      <a class="btn" href="#checkup">Scopri il check-up ESG gratuito <svg class="ico arr" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
+      <a class="btn line" href="#valore">Perché conviene</a>
+    </div>
+    <div class="stats" aria-label="In sintesi">
+      <div class="stat"><b><span data-count="20">20</span><i>+</i></b><span>anni di consulenza direzionale, finanziaria e organizzativa</span></div>
+      <div class="stat"><b><span data-count="1300" data-sep="1">1.300</span><i>+</i></b><span>aziende mappate per benchmark per settore, dimensione, territorio e tema ESG</span></div>
+      <div class="stat"><b>1<i>:</i>1</b><span>un interlocutore senior dall'analisi all'attuazione, senza passaggi di mano</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PERCHÉ ADESSO -->
+<section class="why" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="why-card rv">
+      <div>
+        <p class="eyebrow">Perché adesso</p>
+        <h2 id="why-h">Chi valuta la tua impresa guarda già l'ESG</h2>
+      </div>
+      <div><svg class="ico"><use href="#i-bank"/></svg><h3>Le banche</h3><p>Le linee guida EBA sulla concessione del credito chiedono di considerare i fattori ESG nella valutazione del cliente.</p></div>
+      <div><svg class="ico"><use href="#i-chain"/></svg><h3>I grandi clienti</h3><p>Le imprese soggette a rendicontazione chiedono ai fornitori dati su emissioni, persone e governance.</p></div>
+      <div><svg class="ico"><use href="#i-trend"/></svg><h3>Investitori e acquirenti</h3><p>Fondi e compratori inseriscono l'analisi ESG nella due diligence: i rischi non gestiti diventano sconti sul prezzo.</p></div>
     </div>
   </div>
 </section>
@@ -345,52 +452,52 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <!-- VALORE -->
 <section id="valore">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head rv">
       <div>
         <p class="eyebrow">Il valore della sostenibilità per una PMI</p>
-        <h2>Dove la sostenibilità diventa valore misurabile.</h2>
+        <h2 class="h2">Dove la sostenibilità diventa valore misurabile.</h2>
       </div>
       <p class="lead">Per una PMI la sostenibilità conta quando sposta numeri concreti: costo del debito, fatturato, costi operativi, valore d'impresa. Queste sono le sei leve che verifichiamo in ogni azienda, ciascuna con l'indicatore che la rende misurabile.</p>
     </div>
     <div class="levers">
-      <article class="lever">
-        <span class="k">Credito</span>
+      <article class="lever rv">
+        <div class="lever-top"><span class="lever-ic"><svg class="ico"><use href="#i-bank"/></svg></span><span class="k">Credito</span></div>
         <h3>Accesso al credito e condizioni</h3>
         <p>Dati ESG ordinati migliorano il dialogo con le banche, che integrano la sostenibilità nel merito creditizio e offrono linee dedicate a investimenti green.</p>
-        <p class="kpi">Indicatore: spread e condizioni ottenute, finanziamenti ESG-linked</p>
+        <p class="kpi">Spread e condizioni ottenute, finanziamenti ESG-linked</p>
       </article>
-      <article class="lever">
-        <span class="k">Mercato</span>
+      <article class="lever rv">
+        <div class="lever-top"><span class="lever-ic"><svg class="ico"><use href="#i-chain"/></svg></span><span class="k">Mercato</span></div>
         <h3>Posizione nelle filiere</h3>
         <p>Rispondere bene ai questionari dei clienti protegge le forniture esistenti e apre gare in cui la sostenibilità è un criterio di selezione.</p>
-        <p class="kpi">Indicatore: fatturato da clienti che richiedono dati ESG</p>
+        <p class="kpi">Fatturato da clienti che richiedono dati ESG</p>
       </article>
-      <article class="lever">
-        <span class="k">Costi</span>
+      <article class="lever rv">
+        <div class="lever-top"><span class="lever-ic"><svg class="ico"><use href="#i-bolt"/></svg></span><span class="k">Costi</span></div>
         <h3>Energia, materiali e sprechi</h3>
         <p>Misurare consumi e scarti fa emergere risparmi immediati: efficienza energetica, autoproduzione, riduzione di scarti e imballaggi.</p>
-        <p class="kpi">Indicatore: costo energetico su fatturato, kWh per unità prodotta</p>
+        <p class="kpi">Costo energetico su fatturato, kWh per unità prodotta</p>
       </article>
-      <article class="lever">
-        <span class="k">Agevolazioni</span>
+      <article class="lever rv">
+        <div class="lever-top"><span class="lever-ic"><svg class="ico"><use href="#i-doc"/></svg></span><span class="k">Agevolazioni</span></div>
         <h3>Bandi e incentivi</h3>
         <p>Molti strumenti di finanza agevolata premiano gli investimenti in transizione energetica e digitale, e chiedono di documentare l'impatto ambientale.</p>
-        <p class="kpi">Indicatore: contributi e crediti d'imposta ottenuti</p>
+        <p class="kpi">Contributi e crediti d'imposta ottenuti</p>
       </article>
-      <article class="lever">
-        <span class="k">Persone</span>
+      <article class="lever rv">
+        <div class="lever-top"><span class="lever-ic"><svg class="ico"><use href="#i-people"/></svg></span><span class="k">Persone</span></div>
         <h3>Attrarre e trattenere talenti</h3>
         <p>Welfare, sicurezza, formazione e clima interno incidono su turnover e produttività, soprattutto dove le competenze sono difficili da trovare.</p>
-        <p class="kpi">Indicatore: turnover, ore di formazione, indice infortuni</p>
+        <p class="kpi">Turnover, ore di formazione, indice infortuni</p>
       </article>
-      <article class="lever">
-        <span class="k">Valore</span>
+      <article class="lever rv">
+        <div class="lever-top"><span class="lever-ic"><svg class="ico"><use href="#i-trend"/></svg></span><span class="k">Valore</span></div>
         <h3>Valore d'impresa e operazioni</h3>
         <p>In una cessione, un passaggio generazionale o l'ingresso di un fondo, un profilo ESG solido riduce i rischi percepiti e rende l'azienda più appetibile.</p>
-        <p class="kpi">Indicatore: rischi emersi in due diligence, multipli negoziati</p>
+        <p class="kpi">Rischi emersi in due diligence, multipli negoziati</p>
       </article>
     </div>
-    <div class="context">
+    <div class="context rv">
       <h3>Il quadro di riferimento, in breve</h3>
       <dl>
         <div><dt>CSRD e semplificazioni europee</dt><dd>L'obbligo di rendicontazione riguarda le imprese più grandi, ma i loro dati dipendono dalla catena di fornitura: le richieste arrivano comunque alle PMI.</dd></div>
@@ -405,10 +512,10 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <!-- CHECK-UP -->
 <section id="checkup">
   <div class="wrap">
-    <div class="intro-grid">
+    <div class="sec-head rv">
       <div>
-        <p class="eyebrow">Check-up ESG gratuito</p>
-        <h2>Scopri dove si trova la tua impresa, rispetto a chi ti somiglia.</h2>
+        <p class="eyebrow">Check-up ESG <span class="free">gratuito</span></p>
+        <h2 class="h2">Scopri dove si trova la tua impresa, rispetto a chi ti somiglia.</h2>
       </div>
       <div>
         <p class="lead">Abbiamo sviluppato uno strumento di check-up ESG pensato per le PMI. Poche domande mirate su ambiente, persone, governance e mercato, e un risultato immediato confrontato con il nostro database di oltre 1.300 aziende mappate.</p>
@@ -418,34 +525,26 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
     <div class="ck">
       <div class="ck-info">
-        <div class="ck-group">
-          <h3>Cosa ottieni</h3>
-          <ul class="ck-list">
-            <li><b>Punteggio ESG complessivo</b><span>Un indice su 100 che fotografa il livello di maturità dell'impresa, con il livello raggiunto: punto di partenza, in sviluppo o avanzato.</span></li>
-            <li><b>Profilo per area</b><span>Ambiente, persone e governance valutati separatamente, per capire dove sei forte e dove sei esposto.</span></li>
-            <li><b>Benchmark con aziende simili</b><span>Il confronto con oltre 1.300 imprese mappate, filtrabili per settore, dimensione, area geografica e singolo tema ESG.</span></li>
-            <li><b>Livello di urgenza</b><span>Quanto le richieste di clienti, banche e investitori ti riguardano già oggi o nei prossimi due anni.</span></li>
-            <li><b>Le prime tre priorità</b><span>Gli interventi con il miglior rapporto tra sforzo e beneficio, da cui partire subito.</span></li>
-          </ul>
-        </div>
-        <div class="ck-group">
-          <h3>Come funziona</h3>
-          <ol class="ck-steps">
-            <li>Ci contatti e fissiamo una breve call di presentazione.</li>
-            <li>Compili il check-up, da solo o insieme a noi: bastano pochi minuti.</li>
-            <li>Ricevi subito il risultato e lo commentiamo insieme, senza impegno.</li>
-          </ol>
-        </div>
-        <a class="btn" href="#contatti" id="ck-cta">Richiedi il check-up gratuito</a>
+        <div class="ck-item rv"><span class="n"><svg class="ico"><use href="#i-gauge"/></svg></span><p><b>Punteggio ESG complessivo</b><span>Un indice su 100 che fotografa il livello di maturità dell'impresa, con il livello raggiunto: punto di partenza, in sviluppo o avanzato.</span></p></div>
+        <div class="ck-item rv"><span class="n"><svg class="ico"><use href="#i-leaf"/></svg></span><p><b>Profilo per area</b><span>Ambiente, persone e governance valutati separatamente, per capire dove sei forte e dove sei esposto.</span></p></div>
+        <div class="ck-item rv"><span class="n"><svg class="ico"><use href="#i-bars"/></svg></span><p><b>Benchmark con aziende simili</b><span>Il confronto con oltre 1.300 imprese mappate, filtrabili per settore, dimensione, area geografica e singolo tema ESG.</span></p></div>
+        <div class="ck-item rv"><span class="n"><svg class="ico"><use href="#i-clock"/></svg></span><p><b>Livello di urgenza</b><span>Quanto le richieste di clienti, banche e investitori ti riguardano già oggi o nei prossimi due anni.</span></p></div>
+        <div class="ck-item rv"><span class="n"><svg class="ico"><use href="#i-target"/></svg></span><p><b>Le prime tre priorità</b><span>Gli interventi con il miglior rapporto tra sforzo e beneficio, da cui partire subito.</span></p></div>
+        <ol class="how rv" aria-label="Come funziona">
+          <li>Ci contatti e fissiamo una breve call di presentazione.</li>
+          <li>Compili il check-up, da solo o insieme a noi: bastano pochi minuti.</li>
+          <li>Ricevi subito il risultato e lo commentiamo insieme, senza impegno.</li>
+        </ol>
+        <a class="btn" href="#contatti" data-checkup>Richiedi il check-up gratuito <svg class="ico arr" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
       </div>
 
-      <aside class="ck-res" aria-label="Esempio di risultato del check-up">
-        <p class="eyebrow">Esempio di output</p>
+      <aside class="ck-res pre" id="ck-res" aria-label="Esempio di risultato del check-up">
+        <div class="res-h"><p class="eyebrow">Esempio di output</p><span class="dot3" aria-hidden="true"><i></i><i></i><i></i></span></div>
         <div class="score">
-          <svg viewBox="0 0 100 100" width="104" height="104" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="112" height="112" aria-hidden="true">
             <circle cx="50" cy="50" r="42" class="ring-bg"/>
-            <circle cx="50" cy="50" r="42" class="ring-fg" pathLength="100" stroke-dasharray="48 100" transform="rotate(-90 50 50)"/>
-            <text x="50" y="54" text-anchor="middle" class="ring-num">48</text>
+            <circle cx="50" cy="50" r="42" class="ring-fg" id="ring" pathLength="100" stroke-dasharray="48 100" transform="rotate(-90 50 50)"/>
+            <text x="50" y="55" text-anchor="middle" class="ring-num">48</text>
             <text x="50" y="70" text-anchor="middle" class="ring-sub">su 100</text>
           </svg>
           <div><b>In sviluppo</b><span>Manifattura meccanica · 50–100 dipendenti · Nord Italia</span></div>
@@ -474,27 +573,28 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <!-- SERVIZI -->
 <section id="servizi">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head rv">
       <div>
         <p class="eyebrow">Servizi</p>
-        <h2>Dopo il check-up: i servizi per crescere.</h2>
+        <h2 class="h2">Dopo il check-up: i servizi per crescere.</h2>
       </div>
       <p class="lead">La sostenibilità è il punto di ingresso, il valore si costruisce su tutta l'impresa. Le quattro aree si attivano singolarmente o insieme, con un unico referente.</p>
     </div>
 
-    <div class="services" id="services">
-      <article class="svc" data-area="esg">
-        <div class="code">A · ESG</div>
+    <div class="tabs rv" role="tablist" aria-label="Aree di servizio" hidden id="tabs">
+      <button class="tab" role="tab" id="t-esg" aria-controls="p-esg" aria-selected="true" type="button"><span class="tl">A · ESG <svg class="ico"><use href="#i-leaf"/></svg></span><b>Sostenibilità ESG per PMI</b></button>
+      <button class="tab" role="tab" id="t-org" aria-controls="p-org" aria-selected="false" type="button" tabindex="-1"><span class="tl">B · ORG <svg class="ico"><use href="#i-org"/></svg></span><b>Organizzazione e performance</b></button>
+      <button class="tab" role="tab" id="t-plan" aria-controls="p-plan" aria-selected="false" type="button" tabindex="-1"><span class="tl">C · PLAN <svg class="ico"><use href="#i-plan"/></svg></span><b>Piani industriali e business plan</b></button>
+      <button class="tab" role="tab" id="t-deal" aria-controls="p-deal" aria-selected="false" type="button" tabindex="-1"><span class="tl">D · DEAL <svg class="ico"><use href="#i-deal"/></svg></span><b>Acquisizioni, ristrutturazioni e cessioni</b></button>
+    </div>
+
+    <div class="panels">
+      <article class="svc" id="p-esg" role="tabpanel" aria-labelledby="t-esg">
         <div>
+          <p class="code">A · ESG</p>
           <h3>Sostenibilità ESG per PMI</h3>
-          <p class="for">PER: PMI in filiera · imprese che accedono al credito</p>
+          <p class="for"><span>PMI in filiera</span><span>Imprese che accedono al credito</span></p>
           <p class="intro">Le richieste ESG arrivano alle PMI dai clienti grandi, dalle banche e dai bandi, anche quando la legge non le obbliga. Le trasformo in un percorso gestibile, che produca dati veri e vantaggi concreti.</p>
-          <svg class="svc-fig" viewBox="0 0 260 90" aria-hidden="true">
-            <circle cx="45" cy="45" r="34" class="sf" stroke-width="2"/><text x="45" y="52" text-anchor="middle" class="ac" style="font:700 20px var(--f-display)">E</text>
-            <circle cx="130" cy="45" r="34" class="sf" stroke-width="2"/><text x="130" y="52" text-anchor="middle" class="ac" style="font:700 20px var(--f-display)">S</text>
-            <circle cx="215" cy="45" r="34" class="sf" stroke-width="2"/><text x="215" y="52" text-anchor="middle" class="ac" style="font:700 20px var(--f-display)">G</text>
-            <text x="45" y="88" text-anchor="middle" class="tx">ambiente</text><text x="130" y="88" text-anchor="middle" class="tx">persone</text><text x="215" y="88" text-anchor="middle" class="tx">governance</text>
-          </svg>
         </div>
         <div>
           <ul>
@@ -507,21 +607,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <p class="out"><b>Risultato:</b> un set di dati ESG coerente e riutilizzabile, e una storia di sostenibilità credibile da presentare a clienti e finanziatori.</p>
         </div>
       </article>
-
-      <article class="svc" data-area="org">
-        <div class="code">B · ORG</div>
+      <article class="svc" id="p-org" role="tabpanel" aria-labelledby="t-org">
         <div>
+          <p class="code">B · ORG</p>
           <h3>Organizzazione e performance</h3>
-          <p class="for">PER: PMI in crescita · aziende familiari</p>
+          <p class="for"><span>PMI in crescita</span><span>Aziende familiari</span></p>
           <p class="intro">Quando l'azienda cresce più in fretta della sua struttura, tutto passa dall'imprenditore. Ridisegno ruoli, processi e strumenti di controllo perché l'impresa funzioni anche senza di lui in ogni riunione.</p>
-          <svg class="svc-fig" viewBox="0 0 260 90" aria-hidden="true">
-            <path d="M130 26 V40 M40 40 H220 M40 40 V56 M130 40 V56 M220 40 V56" class="ln" fill="none" stroke-width="2"/>
-            <rect x="95" y="4" width="70" height="22" rx="5" class="ac"/>
-            <rect x="8" y="56" width="64" height="22" rx="5" class="sf" stroke-width="2"/>
-            <rect x="98" y="56" width="64" height="22" rx="5" class="sf" stroke-width="2"/>
-            <rect x="188" y="56" width="64" height="22" rx="5" class="sf" stroke-width="2"/>
-            <text x="40" y="71" text-anchor="middle" class="tx">operations</text><text x="130" y="71" text-anchor="middle" class="tx">commerciale</text><text x="220" y="71" text-anchor="middle" class="tx">finanza</text>
-          </svg>
         </div>
         <div>
           <ul>
@@ -534,12 +625,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <p class="out"><b>Risultato:</b> responsabilità chiare, numeri mensili su cui decidere e un imprenditore con più tempo per la strategia.</p>
         </div>
       </article>
-
-      <article class="svc" data-area="plan">
-        <div class="code">C · PLAN</div>
+      <article class="svc" id="p-plan" role="tabpanel" aria-labelledby="t-plan">
         <div>
+          <p class="code">C · PLAN</p>
           <h3>Piani industriali e business plan</h3>
-          <p class="for">PER: imprenditori · CdA · soci · banche</p>
+          <p class="for"><span>Imprenditori</span><span>CdA e soci</span><span>Banche</span></p>
           <p class="intro">Un piano credibile unisce strategia e numeri: ricavi, marginalità, investimenti e flussi di cassa. Lo costruisco con il management, in modo che sia uno strumento di governo e non un documento da cassetto.</p>
         </div>
         <div>
@@ -553,22 +643,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <p class="out"><b>Risultato:</b> un piano difendibile davanti a chi finanzia, e una rotta condivisa dentro l'azienda.</p>
         </div>
       </article>
-
-      <article class="svc" data-area="deal">
-        <div class="code">D · DEAL</div>
+      <article class="svc" id="p-deal" role="tabpanel" aria-labelledby="t-deal">
         <div>
+          <p class="code">D · DEAL</p>
           <h3>Acquisizioni, ristrutturazioni e cessioni</h3>
-          <p class="for">PER: imprese · fondi di private equity · investitori</p>
+          <p class="for"><span>Imprese</span><span>Fondi di private equity</span><span>Investitori</span></p>
           <p class="intro">Supporto imprese e fondi nelle fasi delicate della vita aziendale: comprare, vendere, rilanciare. Con un occhio alla realtà operativa che i soli numeri non raccontano.</p>
-          <svg class="svc-fig" viewBox="0 0 260 90" aria-hidden="true">
-            <circle cx="40" cy="40" r="26" class="sf" stroke-width="2"/>
-            <circle cx="40" cy="40" r="10" class="oc"/>
-            <path d="M74 40 H150" fill="none" stroke="var(--moss)" stroke-width="2" stroke-dasharray="5 5"/>
-            <path d="M144 33 L154 40 L144 47" fill="none" stroke="var(--moss)" stroke-width="2"/>
-            <circle cx="205" cy="40" r="34" class="sf" stroke-width="2"/>
-            <circle cx="193" cy="40" r="11" class="ac"/><circle cx="218" cy="40" r="10" class="oc"/>
-            <text x="40" y="86" text-anchor="middle" class="tx">target</text><text x="112" y="30" text-anchor="middle" class="tx">closing</text><text x="205" y="88" text-anchor="middle" class="tx">gruppo integrato</text>
-          </svg>
         </div>
         <div>
           <ul>
@@ -585,19 +665,19 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   </div>
 </section>
 
-<!-- PROSSIMITÀ -->
+<!-- APPROCCIO -->
 <section id="approccio">
-  <div class="wrap prox-grid">
-    <div>
+  <div class="wrap prox">
+    <div class="rv">
       <p class="eyebrow">Approccio di prossimità</p>
-      <h2>Vicino all'impresa, non solo ai suoi numeri.</h2>
-      <p class="lead" style="margin-top:20px">Una PMI non è una grande azienda in piccolo. Le decisioni passano dall'imprenditore, le risorse sono contate e ogni progetto deve reggersi da solo. Per questo lavoro sul posto, con tempi e linguaggio dell'azienda.</p>
+      <h2 class="h2">Vicino all'impresa, non solo ai suoi numeri.</h2>
+      <p class="lead">Una PMI non è una grande azienda in piccolo. Le decisioni passano dall'imprenditore, le risorse sono contate e ogni progetto deve reggersi da solo. Per questo lavoro sul posto, con tempi e linguaggio dell'azienda.</p>
     </div>
     <div class="prox-list">
-      <div><h3>Presenza in azienda</h3><p>Le analisi si fanno in reparto, in amministrazione, con i responsabili. Le riunioni servono a decidere, non a presentare slide.</p></div>
-      <div><h3>Un solo referente senior</h3><p>Chi fa la diagnosi segue anche l'attuazione. Nessun junior mandato a imparare sul vostro progetto.</p></div>
-      <div><h3>Proporzionalità</h3><p>Strumenti e adempimenti dimensionati sulla PMI: il report ESG o il controllo di gestione devono servire, non appesantire.</p></div>
-      <div><h3>Ponte con banche e investitori</h3><p>Traduco i progetti dell'impresa nel linguaggio di istituti di credito, fondi e advisor, e viceversa.</p></div>
+      <div class="rv"><svg class="ico"><use href="#i-pin"/></svg><h3>Presenza in azienda</h3><p>Le analisi si fanno in reparto, in amministrazione, con i responsabili. Le riunioni servono a decidere, non a presentare slide.</p></div>
+      <div class="rv"><svg class="ico"><use href="#i-user"/></svg><h3>Un solo referente senior</h3><p>Chi fa la diagnosi segue anche l'attuazione. Nessun junior mandato a imparare sul vostro progetto.</p></div>
+      <div class="rv"><svg class="ico"><use href="#i-scale"/></svg><h3>Proporzionalità</h3><p>Strumenti e adempimenti dimensionati sulla PMI: il report ESG o il controllo di gestione devono servire, non appesantire.</p></div>
+      <div class="rv"><svg class="ico"><use href="#i-bridge"/></svg><h3>Ponte con banche e investitori</h3><p>Traduco i progetti dell'impresa nel linguaggio di istituti di credito, fondi e advisor, e viceversa.</p></div>
     </div>
   </div>
 </section>
@@ -605,39 +685,40 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <!-- CASI -->
 <section id="casi">
   <div class="wrap">
-    <p class="eyebrow">Esperienze concrete</p>
-    <h2 style="font-size:clamp(2rem,4vw,3rem);margin-top:14px;max-width:22ch">Situazioni tipiche in cui intervengo.</h2>
+    <div class="sec-head rv">
+      <div>
+        <p class="eyebrow">Esperienze concrete</p>
+        <h2 class="h2">Situazioni tipiche in cui intervengo.</h2>
+      </div>
+      <p class="lead">Ogni caso segue lo stesso filo: la situazione di partenza, l'intervento, quello che resta all'azienda.</p>
+    </div>
     <div class="cases">
-      <article class="case">
-        <span class="tag">Manifattura · fornitore di grandi gruppi</span>
-        <h3>Il cliente chiede il rating ESG</h3>
+      <article class="case rv">
+        <div class="case-h"><span class="tag">Manifattura · fornitore di grandi gruppi</span><h3>Il cliente chiede il rating ESG</h3></div>
         <dl>
           <div><dt>Situazione</dt><dd>Un committente importante introduce un questionario di sostenibilità obbligatorio per restare in lista fornitori.</dd></div>
           <div><dt>Intervento</dt><dd>Raccolta dati su energia, emissioni, persone e governance; primo report VSME; piano di miglioramento con priorità e costi.</dd></div>
           <div><dt>Cosa resta</dt><dd>Fornitura confermata, dati pronti per i questionari successivi e per il dialogo con la banca.</dd></div>
         </dl>
       </article>
-      <article class="case">
-        <span class="tag">Azienda familiare · seconda generazione</span>
-        <h3>Tutto passa dal fondatore</h3>
+      <article class="case rv">
+        <div class="case-h"><span class="tag">Azienda familiare · seconda generazione</span><h3>Tutto passa dal fondatore</h3></div>
         <dl>
           <div><dt>Situazione</dt><dd>Fatturato cresciuto, struttura rimasta quella di dieci anni prima. Decisioni lente, marginalità per prodotto sconosciuta.</dd></div>
           <div><dt>Intervento</dt><dd>Nuovo organigramma e deleghe, contabilità industriale, reporting mensile e riunione di direzione strutturata.</dd></div>
           <div><dt>Cosa resta</dt><dd>Prime linee responsabilizzate e una base pronta per il passaggio generazionale.</dd></div>
         </dl>
       </article>
-      <article class="case">
-        <span class="tag">PMI di servizi · piano di sviluppo</span>
-        <h3>Serve un piano che convinca la banca</h3>
+      <article class="case rv">
+        <div class="case-h"><span class="tag">PMI di servizi · piano di sviluppo</span><h3>Serve un piano che convinca la banca</h3></div>
         <dl>
           <div><dt>Situazione</dt><dd>Investimento rilevante in nuova capacità produttiva, da finanziare a medio-lungo termine.</dd></div>
           <div><dt>Intervento</dt><dd>Piano industriale triennale, scenari, verifica della sostenibilità del debito e presentazione agli istituti.</dd></div>
           <div><dt>Cosa resta</dt><dd>Un piano difendibile e uno strumento di monitoraggio usato poi ogni trimestre.</dd></div>
         </dl>
       </article>
-      <article class="case">
-        <span class="tag">Fondo di investimento · PMI target</span>
-        <h3>Acquisizione e primi 100 giorni</h3>
+      <article class="case rv">
+        <div class="case-h"><span class="tag">Fondo di investimento · PMI target</span><h3>Acquisizione e primi 100 giorni</h3></div>
         <dl>
           <div><dt>Situazione</dt><dd>Un investitore valuta l'ingresso in una PMI con forte know-how ma processi poco formalizzati.</dd></div>
           <div><dt>Intervento</dt><dd>Due diligence operativa e organizzativa, individuazione delle leve di valore, piano dei primi 100 giorni dopo il closing.</dd></div>
@@ -650,15 +731,19 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 </section>
 
 <!-- METODO -->
-<section id="metodo" class="band">
+<section id="metodo">
   <div class="wrap">
-    <p class="eyebrow">Metodo</p>
-    <h2>Dal primo incontro ai risultati misurati.</h2>
+    <div class="sec-head rv">
+      <div>
+        <p class="eyebrow">Metodo</p>
+        <h2 class="h2">Dal primo incontro ai risultati misurati.</h2>
+      </div>
+    </div>
     <ol class="steps">
-      <li><h3>Ascolto</h3><p>Incontro in azienda con l'imprenditore per capire priorità, vincoli e urgenze.</p><span class="t">Primo incontro senza impegno</span></li>
-      <li><h3>Diagnosi</h3><p>Analisi di numeri, processi e organizzazione. Una sintesi chiara di dove intervenire e perché.</p><span class="t">Tipicamente 2–4 settimane</span></li>
-      <li><h3>Progetto</h3><p>Piano di lavoro con obiettivi misurabili, responsabili, tempi e costi definiti.</p><span class="t">Proposta scritta e condivisa</span></li>
-      <li><h3>Attuazione</h3><p>Affiancamento nella realizzazione e verifica periodica dei risultati sui KPI concordati.</p><span class="t">Durata secondo il progetto</span></li>
+      <li class="rv"><h3>Ascolto</h3><p>Incontro in azienda con l'imprenditore per capire priorità, vincoli e urgenze.</p><span class="t">Primo incontro senza impegno</span></li>
+      <li class="rv"><h3>Diagnosi</h3><p>Analisi di numeri, processi e organizzazione. Una sintesi chiara di dove intervenire e perché.</p><span class="t">Tipicamente 2–4 settimane</span></li>
+      <li class="rv"><h3>Progetto</h3><p>Piano di lavoro con obiettivi misurabili, responsabili, tempi e costi definiti.</p><span class="t">Proposta scritta e condivisa</span></li>
+      <li class="rv"><h3>Attuazione</h3><p>Affiancamento nella realizzazione e verifica periodica dei risultati sui KPI concordati.</p><span class="t">Durata secondo il progetto</span></li>
     </ol>
   </div>
 </section>
@@ -666,26 +751,28 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <!-- PROFILO -->
 <section id="profilo">
   <div class="wrap profile">
-    <div>
-      <!-- Sostituire con <img src="claudio-fortunati.jpg" alt="Claudio Fortunati"> quando la foto è disponibile -->
-      <div class="portrait" role="img" aria-label="Claudio Fortunati">CF</div>
+    <div class="rv">
+      <!-- Sostituire con <img src="claudio-fortunati.jpg" alt="Claudio Fortunati" style="width:100%;height:100%;object-fit:cover"> dentro .portrait quando la foto è disponibile -->
+      <div class="portrait" role="img" aria-label="Claudio Fortunati"><span>CF</span></div>
       <p class="portrait-cap">Claudio Fortunati · Consulente di direzione</p>
     </div>
     <div>
-      <p class="eyebrow">Profilo</p>
-      <h2>Claudio Fortunati</h2>
-      <div class="bio">
-        <p class="lead">Da oltre vent'anni lavoro nella consulenza, accanto a imprese di dimensioni e settori diversi, dalle PMI familiari ai gruppi strutturati, e a investitori che le finanziano o le acquisiscono.</p>
-        <p>Ho maturato esperienza in consulenza direzionale e organizzativa, pianificazione e controllo, finanza d'impresa e operazioni straordinarie. Negli ultimi anni ho integrato la sostenibilità ESG nei progetti, perché oggi incide sull'accesso al credito, sulle filiere e sul valore dell'impresa.</p>
-        <p>Ho fondato Consulting4Partners per portare questa esperienza alle PMI con un approccio diretto: un referente senior, presenza in azienda e attenzione ai risultati misurabili.</p>
+      <div class="rv">
+        <p class="eyebrow">Profilo</p>
+        <h2 class="h2">Claudio Fortunati</h2>
+        <div class="bio">
+          <p class="lead">Da oltre vent'anni lavoro nella consulenza, accanto a imprese di dimensioni e settori diversi, dalle PMI familiari ai gruppi strutturati, e a investitori che le finanziano o le acquisiscono.</p>
+          <p>Ho maturato esperienza in consulenza direzionale e organizzativa, pianificazione e controllo, finanza d'impresa e operazioni straordinarie. Negli ultimi anni ho integrato la sostenibilità ESG nei progetti, perché oggi incide sull'accesso al credito, sulle filiere e sul valore dell'impresa.</p>
+          <p>Ho fondato Consulting4Partners per portare questa esperienza alle PMI con un approccio diretto: un referente senior, presenza in azienda e attenzione ai risultati misurabili.</p>
+        </div>
       </div>
-      <div class="timeline" aria-label="Percorso professionale">
+      <div class="timeline rv" aria-label="Percorso professionale">
         <div><span class="yrs">Oggi</span><p><b>Fondatore, Consulting4Partners</b><span>Consulenza indipendente per PMI, imprenditori e fondi su ESG, organizzazione, piani e operazioni straordinarie.</span></p></div>
         <div><span class="yrs">Esperienza</span><p><b>Advisory per investitori e operazioni straordinarie</b><span>Supporto a fondi e imprese in acquisizioni, due diligence, ristrutturazioni e monitoraggio delle partecipate.</span></p></div>
         <div><span class="yrs">Esperienza</span><p><b>Consulenza direzionale e organizzativa</b><span>Progetti di riorganizzazione, controllo di gestione, miglioramento dei processi e delle performance.</span></p></div>
         <div><span class="yrs">Esperienza</span><p><b>Pianificazione e finanza d'impresa</b><span>Piani industriali, business plan, rapporti con il sistema bancario e gli investitori.</span></p></div>
       </div>
-      <div class="skills" aria-label="Competenze">
+      <div class="skills rv" aria-label="Competenze">
         <span>Sostenibilità ESG</span><span>Benchmark ESG</span><span>Standard VSME</span><span>Piani industriali</span><span>Controllo di gestione</span><span>Riorganizzazione</span><span>M&amp;A</span><span>Due diligence</span><span>Ristrutturazioni</span><span>Passaggio generazionale</span><span>Private equity</span>
       </div>
     </div>
@@ -695,10 +782,10 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <!-- CONTATTI -->
 <section id="contatti">
   <div class="wrap contact">
-    <div>
+    <div class="rv">
       <p class="eyebrow">Contatti</p>
-      <h2>Raccontami la tua impresa.</h2>
-      <p class="lead">Il primo incontro serve a capire se e come posso essere utile. Senza impegno, in azienda o da remoto.</p>
+      <h2 class="h2">Raccontami la tua impresa.</h2>
+      <p class="lead">Il primo incontro serve a capire se e come posso essere utile. Senza impegno, in azienda o da remoto. Per provare il check-up ESG gratuito, scegli la voce dedicata nel modulo.</p>
       <div class="direct">
         <!-- Verificare indirizzo email, telefono e P.IVA prima della pubblicazione -->
         <div><span class="k">Email</span><span class="v" id="mail">info@consulting4partners.it</span><button class="copy" type="button" data-copy="mail">Copia</button></div>
@@ -706,7 +793,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <div><span class="k">Zona</span><span class="v">Italia · in presenza e da remoto</span></div>
       </div>
     </div>
-    <form class="f" id="contact-form" novalidate>
+    <form class="f rv" id="contact-form" novalidate>
+      <h3>Scrivimi</h3>
       <div class="row">
         <label for="cf-name">Nome e cognome<input id="cf-name" name="name" autocomplete="name" required></label>
         <label for="cf-company">Azienda<input id="cf-company" name="company" autocomplete="organization"></label>
@@ -725,7 +813,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </label>
       </div>
       <label for="cf-msg">Messaggio<textarea id="cf-msg" name="message" placeholder="Settore, dimensione, cosa vorresti affrontare"></textarea></label>
-      <div><button class="btn" type="submit">Prepara email</button></div>
+      <div><button class="btn dark" type="submit">Prepara email <svg class="ico arr" style="width:18px;height:18px"><use href="#i-arrow"/></svg></button></div>
       <p class="msg" id="cf-out" aria-live="polite"></p>
     </form>
   </div>
@@ -740,18 +828,138 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   </div>
 </footer>
 
+<a class="btn fab" href="#contatti" data-checkup id="fab">Check-up gratuito</a>
+
 <script>
 (function () {
-  // Il pulsante del check-up preseleziona la richiesta nel modulo
-  document.getElementById('ck-cta').addEventListener('click', function () {
-    document.getElementById('cf-area').value = 'Check-up ESG gratuito';
+  var doc = document.documentElement;
+  doc.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Header: sfondo pieno dopo l'hero, barra di avanzamento, voce attiva
+  var bar = document.getElementById('top-bar'), prog = document.getElementById('progress');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  var fab = document.getElementById('fab'), contact = document.getElementById('contatti'), hero = document.querySelector('.hero');
+  function onScroll() {
+    var y = window.scrollY, h = doc.scrollHeight - innerHeight;
+    bar.classList.toggle('solid', y > 40);
+    prog.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
+    var cur = -1;
+    secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < innerHeight * 0.35) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+    var cr = contact.getBoundingClientRect();
+    fab.classList.toggle('hide', y < hero.offsetHeight * 0.6 || cr.top < innerHeight);
+  }
+  addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
+
+  // Menu mobile
+  var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  function setMenu(open) {
+    mnav.hidden = !open; burger.setAttribute('aria-expanded', open);
+    burger.innerHTML = '<svg class="ico"><use href="#i-' + (open ? 'x' : 'menu') + '"/></svg>';
+    burger.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
+    bar.style.zIndex = open ? 26 : '';
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function () { setMenu(mnav.hidden); });
+  mnav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  addEventListener('keydown', function (e) { if (e.key === 'Escape' && !mnav.hidden) setMenu(false); });
+
+  // Schede dei servizi
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  document.getElementById('tabs').hidden = false;
+  function show(t, focus) {
+    tabs.forEach(function (x) {
+      var on = x === t;
+      x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) t.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(t); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (d) { e.preventDefault(); show(tabs[(i + d + tabs.length) % tabs.length], true); }
+    });
+  });
+  show(tabs[0]);
+
+  // Comparsa degli elementi sotto la piega
+  var rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('below'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    rv.forEach(function (el) { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('below'); io.observe(el); } });
+
+    // Esempio di output: anello e barre si riempiono all'arrivo
+    var res = document.getElementById('ck-res'), ring = document.getElementById('ring');
+    if (res.getBoundingClientRect().top > innerHeight) {
+      ring.setAttribute('stroke-dasharray', '0 100');
+      var io2 = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { res.classList.remove('pre'); requestAnimationFrame(function () { ring.setAttribute('stroke-dasharray', '48 100'); }); io2.disconnect(); }
+      }, { threshold: 0.3 });
+      io2.observe(res);
+    } else res.classList.remove('pre');
+
+    // Contatori
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var to = +el.dataset.count, sep = el.dataset.sep, t0 = null;
+      function fmt(n) { return sep ? n.toLocaleString('it-IT') : String(n); }
+      function step(t) { if (!t0) t0 = t; var k = Math.min(1, (t - t0) / 1400); el.textContent = fmt(Math.round(to * (1 - Math.pow(1 - k, 3)))); if (k < 1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    });
+  } else document.getElementById('ck-res').classList.remove('pre');
+
+  // Mappa del benchmark nell'hero: 1.300 punti, uno evidenziato
+  var cv = document.getElementById('field'), ctx = cv.getContext('2d');
+  var seed = 7; function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+  function gauss() { return (rnd() + rnd() + rnd() + rnd() - 2) / 2; }
+  var pts = [];
+  for (var i = 0; i < 1300; i++) {
+    var x = 0.5 + gauss() * 0.42, y = 0.5 + gauss() * 0.42 + (x - 0.5) * -0.35;
+    pts.push({ x: Math.max(0.03, Math.min(0.97, x)), y: Math.max(0.05, Math.min(0.95, y)), p: rnd() * 6.28, r: 1 + rnd() * 1.6, h: rnd() });
+  }
+  var me = { x: 0.62, y: 0.42 };
+  var W, H, dpr;
+  function size() { dpr = Math.min(2, devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    var s = t / 1000;
+    for (var i = 0; i < pts.length; i++) {
+      var p = pts[i];
+      var x = (p.x + Math.sin(s * 0.35 + p.p) * 0.004) * W, y = (p.y + Math.cos(s * 0.3 + p.p) * 0.004) * H;
+      var d = Math.hypot(p.x - me.x, (p.y - me.y) * 1.3);
+      ctx.globalAlpha = d < 0.12 ? 0.95 : 0.45 + p.h * 0.3;
+      ctx.fillStyle = d < 0.12 ? '#7fe0b4' : (p.h > 0.93 ? '#f0b64a' : '#4f8f7a');
+      ctx.beginPath(); ctx.arc(x, y, p.r, 0, 6.283); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    if (W < 600) { if (!reduce) requestAnimationFrame(draw); return; }
+    var mx = me.x * W, my = me.y * H, pulse = (s % 2.4) / 2.4;
+    ctx.strokeStyle = 'rgba(240,182,74,' + (1 - pulse) + ')'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(mx, my, 8 + pulse * 26, 0, 6.283); ctx.stroke();
+    ctx.fillStyle = '#f0b64a'; ctx.beginPath(); ctx.arc(mx, my, 6, 0, 6.283); ctx.fill();
+    ctx.font = '500 12px "IBM Plex Mono", monospace'; ctx.fillStyle = '#eaf3ee';
+    ctx.fillText('LA TUA IMPRESA', mx + 14, my - 10);
+    ctx.fillStyle = 'rgba(234,243,238,.45)'; ctx.font = '400 11px "IBM Plex Mono", monospace';
+    ctx.fillText('AMBIENTE →', W - 110, H - 18);
+    ctx.save(); ctx.translate(18, 110); ctx.rotate(-Math.PI / 2); ctx.fillText('GOVERNANCE →', 0, 0); ctx.restore();
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  size(); addEventListener('resize', size); requestAnimationFrame(draw);
+
+  // Pulsanti del check-up: preselezionano la richiesta nel modulo
+  document.querySelectorAll('[data-checkup]').forEach(function (a) {
+    a.addEventListener('click', function () { document.getElementById('cf-area').value = 'Check-up ESG gratuito'; });
   });
 
   // Copia email
   document.querySelectorAll('[data-copy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var el = document.getElementById(btn.dataset.copy);
-      var txt = el.textContent.trim();
+      var el = document.getElementById(btn.dataset.copy), txt = el.textContent.trim();
       var done = function () { btn.textContent = 'Copiato'; setTimeout(function () { btn.textContent = 'Copia'; }, 1600); };
       var fallback = function () { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selezionato'; };
       if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, fallback); else fallback();
@@ -759,8 +967,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   });
 
   // Modulo: prepara una email con i dati inseriti
-  var form = document.getElementById('contact-form');
-  var out = document.getElementById('cf-out');
+  var form = document.getElementById('contact-form'), out = document.getElementById('cf-out');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var name = form.name.value.trim(), email = form.email.value.trim();
