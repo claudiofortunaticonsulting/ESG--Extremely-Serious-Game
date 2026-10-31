@@ -87,42 +87,96 @@ header.top .btn { padding: 10px 16px; font-size: 0.88rem; }
 @media (max-width: 860px) { nav.main { display: none; } }
 
 /* Hero */
-.hero { padding-block: clamp(56px, 8vw, 104px) clamp(48px, 6vw, 80px); }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
-.hero h1 { font-size: clamp(2.4rem, 5.4vw, 4.2rem); margin-top: 18px; }
+.hero { padding-block: clamp(56px, 8vw, 104px) clamp(40px, 5vw, 64px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.hero h1 { font-size: clamp(2.5rem, 5.8vw, 4.5rem); margin-top: 18px; }
 .hero h1 em { font-style: normal; color: var(--moss); }
 .hero .lead { margin-top: 24px; }
 .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.hero-visual { position: relative; padding: 0 0 40px 28px; }
-.hero-photo { aspect-ratio: 4 / 5; margin: 0; }
-.float-card {
-  position: absolute; z-index: 2; background: var(--surface); color: var(--ink); border: 1px solid var(--line);
-  border-radius: 14px; box-shadow: 0 18px 40px -18px rgba(8,19,15,.45); padding: 14px 16px;
-}
-.fc-plan { left: 0; bottom: 0; display: grid; gap: 6px; }
-.fc-k { font: 500 0.7rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.fc-axis { stroke: var(--line); stroke-width: 1; }
-.fc-bar { fill: var(--chip); }
-.fc-hi { fill: var(--moss); }
-.fc-line { fill: none; stroke: var(--ochre); stroke-width: 2; }
-.fc-dot { fill: var(--ochre); }
-.fc-yrs { display: flex; justify-content: space-between; padding-inline: 8px 30px; font: 400 0.68rem/1 var(--f-mono); color: var(--muted); }
-.fc-yrs i { font-style: normal; }
-.fc-esg { right: -10px; top: 28px; display: flex; align-items: center; gap: 12px; }
-.fc-ring { fill: none; stroke: var(--chip); stroke-width: 7; }
-.fc-ring-on { fill: none; stroke: var(--moss); stroke-width: 7; stroke-linecap: round; }
-.fc-esg b { display: block; font: 700 1rem/1.1 var(--f-display); }
-.fc-esg small { color: var(--muted); font-size: 0.78rem; }
-.ledger { border-top: 2px solid var(--ink); margin-top: clamp(40px, 6vw, 72px); display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0 32px; }
+.why-now { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: 26px 26px 10px; }
+.why-now .eyebrow { color: var(--ochre); }
+.why-now h2 { font-size: 1.35rem; margin: 10px 0 6px; letter-spacing: -0.01em; }
+.why-now ol { list-style: none; margin: 0; padding: 0; }
+.why-now li { padding-block: 16px; border-top: 1px solid var(--line); display: grid; gap: 4px; }
+.why-now li:first-child { border-top: 0; }
+.why-now b { font-weight: 600; }
+.why-now span { color: var(--muted); font-size: 0.95rem; }
+.ledger { border-top: 2px solid var(--ink); margin-top: clamp(40px, 6vw, 64px); display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0 32px; }
 .ledger div { display: grid; grid-template-columns: 4.5rem minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--line); align-items: baseline; }
 .ledger b { font: 500 1.8rem/1 var(--f-display); font-variant-numeric: tabular-nums; color: var(--moss); }
 .ledger span { color: var(--muted); font-size: 0.95rem; }
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: minmax(0,1fr); }
-  .hero-visual { max-width: 460px; }
-  .fc-esg { right: 0; }
   .ledger { grid-template-columns: minmax(0,1fr); }
 }
+
+/* Valore della sostenibilità */
+#valore { background: var(--surface); border-block: 1px solid var(--line); }
+.levers { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border-top: 2px solid var(--ink); }
+.lever { padding: 28px 28px 30px 0; border-bottom: 1px solid var(--line); display: grid; gap: 10px; align-content: start; }
+.lever:not(:nth-child(3n+1)) { padding-left: 28px; border-left: 1px solid var(--line); }
+.lever .k { font: 500 0.75rem/1 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--moss); }
+.lever h3 { font-size: 1.3rem; letter-spacing: -0.01em; }
+.lever p { color: var(--muted); font-size: 0.97rem; }
+.lever .kpi { margin-top: 4px; font: 400 0.8rem/1.45 var(--f-mono); color: var(--ink); background: var(--chip); border-radius: 8px; padding: 8px 10px; }
+@media (max-width: 900px) {
+  .levers { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .lever, .lever:not(:nth-child(3n+1)) { padding: 24px 0; border-left: 0; }
+  .lever:nth-child(2n) { padding-left: 24px; border-left: 1px solid var(--line); }
+}
+@media (max-width: 600px) {
+  .levers { grid-template-columns: minmax(0,1fr); }
+  .lever:nth-child(2n) { padding-left: 0; border-left: 0; }
+}
+.context { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr); gap: 32px; }
+.context h3 { font-size: 1.5rem; }
+.context dl { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px 32px; }
+.context dt { font-weight: 600; }
+.context dd { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; }
+@media (max-width: 760px) { .context, .context dl { grid-template-columns: minmax(0,1fr); } }
+
+/* Check-up ESG */
+#checkup .intro-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 32px; align-items: end; margin-bottom: 40px; }
+#checkup h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 14px; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.badges span { font: 500 0.78rem/1 var(--f-mono); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--moss); color: var(--moss); }
+.ck { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.ck-q { display: grid; gap: 28px; }
+.ck-group h3 { font: 500 0.8rem/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--moss); padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+.ck-group h3 small { color: var(--muted); letter-spacing: 0.04em; text-transform: none; margin-left: 6px; }
+.q { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 10px 20px; align-items: center; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.q p { font-size: 0.98rem; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--surface); }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.seg label { font: 500 0.82rem/1 var(--f-body); padding: 9px 13px; cursor: pointer; color: var(--muted); white-space: nowrap; }
+.seg input:not(:first-child) + label { border-left: 1px solid var(--line); }
+.seg input:checked + label { background: var(--ink); color: var(--paper); }
+.seg input:focus-visible + label { outline: 2px solid var(--moss); outline-offset: -2px; }
+@media (max-width: 560px) { .q { grid-template-columns: minmax(0,1fr); } }
+
+.ck-res { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 84px); border-radius: 18px; background: var(--band); color: var(--band-ink); padding: 28px; display: grid; gap: 20px; }
+.ck-res .eyebrow { color: var(--ochre); }
+.score { display: flex; align-items: center; gap: 18px; }
+.score svg { flex: none; }
+.ring-bg { fill: none; stroke: color-mix(in srgb, var(--band-ink) 15%, transparent); stroke-width: 9; }
+.ring-fg { fill: none; stroke: var(--ochre); stroke-width: 9; stroke-linecap: round; transition: stroke-dasharray .4s ease; }
+.ring-num { fill: var(--band-ink); font: 700 26px var(--f-display); }
+.ring-sub { fill: var(--band-muted); font: 400 10px var(--f-mono); }
+.score b { display: block; font: 700 1.35rem/1.15 var(--f-display); }
+.score span { color: var(--band-muted); font-size: 0.9rem; }
+.meters { display: grid; gap: 12px; }
+.meter { display: grid; grid-template-columns: 6.5rem minmax(0,1fr) 2.6rem; gap: 10px; align-items: center; font-size: 0.88rem; }
+.meter i { display: block; height: 6px; border-radius: 6px; background: color-mix(in srgb, var(--band-ink) 15%, transparent); overflow: hidden; }
+.meter i::after { content: ""; display: block; height: 100%; width: var(--w, 0%); background: var(--band-ink); border-radius: 6px; transition: width .4s ease; }
+.meter em { font: 500 0.82rem/1 var(--f-mono); font-style: normal; text-align: right; font-variant-numeric: tabular-nums; color: var(--band-muted); }
+.urg { font: 500 0.8rem/1.4 var(--f-mono); padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--ochre) 18%, transparent); color: var(--band-ink); }
+.prio h4 { margin: 0 0 8px; font: 600 0.95rem/1.3 var(--f-body); }
+.prio ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--band-muted); font-size: 0.92rem; }
+.prio ol li::marker { color: var(--ochre); font-family: var(--f-mono); }
+.ck-res .btn { background: var(--ochre); border-color: var(--ochre); color: #14110a; justify-self: start; }
+.ck-res .fine { font-size: 0.78rem; color: var(--band-muted); }
+.ck-progress { font: 400 0.82rem/1 var(--f-mono); color: var(--band-muted); }
+@media (max-width: 900px) { #checkup .intro-grid, .ck { grid-template-columns: minmax(0,1fr); } .ck-res { position: static; } }
 
 /* Prossimità */
 .prox-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: clamp(32px, 5vw, 80px); }
@@ -138,33 +192,12 @@ header.top .btn { padding: 10px 16px; font-size: 0.88rem; }
 .sec-head h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 14px; max-width: 18ch; }
 .sec-head .lead { max-width: 46ch; font-size: 1.05rem; }
 
-/* Foto con sfondo grafico di riserva (se l'immagine non carica resta il motivo) */
-.photo {
-  position: relative; overflow: hidden; border-radius: 18px; max-width: 100%;
-  background:
-    radial-gradient(circle at 20% 25%, color-mix(in srgb, var(--moss) 55%, transparent) 0 18%, transparent 19%),
-    radial-gradient(circle at 78% 70%, color-mix(in srgb, var(--ochre) 45%, transparent) 0 14%, transparent 15%),
-    repeating-linear-gradient(135deg, transparent 0 22px, color-mix(in srgb, var(--band-ink) 7%, transparent) 22px 23px),
-    linear-gradient(160deg, var(--band), color-mix(in srgb, var(--band) 70%, var(--moss)));
-}
-.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(8,19,15,.55)); pointer-events: none; }
-.photo figcaption { position: absolute; left: 18px; bottom: 16px; right: 18px; z-index: 1; color: #f2f6f4; font: 500 0.8rem/1.3 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; }
-
 .svc-fig { margin-top: 22px; width: 100%; max-width: 260px; height: auto; color: var(--moss); }
 .svc-fig .ln { stroke: var(--line); }
 .svc-fig .tx { fill: var(--muted); font: 500 10px var(--f-mono); }
 .svc-fig .ac { fill: var(--moss); }
 .svc-fig .oc { fill: var(--ochre); }
 .svc-fig .sf { fill: var(--chip); stroke: var(--moss); }
-
-.gallery { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 16px; }
-.gallery .photo { aspect-ratio: 4 / 5; }
-.gallery .photo:first-child { aspect-ratio: auto; min-height: 100%; }
-@media (max-width: 760px) {
-  .gallery { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
-  .gallery .photo:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
-}
 
 .services { display: grid; gap: 0; border-top: 2px solid var(--ink); }
 .svc {
@@ -264,13 +297,14 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="wrap">
     <a class="brand" href="#top">Consulting<span>4</span>Partners</a>
     <nav class="main" aria-label="Sezioni">
-      <a href="#approccio">Approccio</a>
+      <a href="#valore">Valore ESG</a>
+      <a href="#checkup">Check-up gratuito</a>
       <a href="#servizi">Servizi</a>
       <a href="#casi">Casi</a>
       <a href="#metodo">Metodo</a>
       <a href="#profilo">Profilo</a>
     </nav>
-    <a class="btn" href="#contatti">Parliamone</a>
+    <a class="btn" href="#checkup">Check-up gratuito</a>
   </div>
 </header>
 
@@ -280,61 +314,134 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">Consulenza di direzione per PMI</p>
-      <h1>Crescita <em>sostenibile</em>, numeri solidi, decisioni prese con chi conosce l'impresa.</h1>
-      <p class="lead">Affianco imprenditori, management e fondi su sostenibilità ESG, organizzazione, piani industriali e operazioni straordinarie. Lavoro in azienda, accanto a chi decide, con strumenti calibrati sulla dimensione di una PMI.</p>
+      <p class="eyebrow">Consulenza per PMI · Sostenibilità e valore d'impresa</p>
+      <h1>Aumentiamo il valore delle PMI italiane attraverso la <em>sostenibilità</em>.</h1>
+      <p class="lead">La sostenibilità oggi pesa sul rating bancario, sulla permanenza nelle filiere dei grandi clienti, sull'accesso a bandi e sul prezzo di un'azienda quando entra un socio o un fondo. Aiuto le PMI a trasformarla da adempimento a leva di valore, con dati misurati e un piano concreto.</p>
       <div class="ctas">
-        <a class="btn" href="#contatti">Fissa un primo incontro</a>
-        <a class="btn ghost" href="#servizi">Vedi i servizi</a>
+        <a class="btn" href="#checkup">Fai il check-up ESG gratuito</a>
+        <a class="btn ghost" href="#valore">Perché conviene</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <figure class="photo hero-photo">
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=1100&amp;q=70" alt="Riunione di lavoro attorno a un tavolo" loading="eager" onerror="this.remove()">
-      </figure>
-      <div class="float-card fc-plan" aria-hidden="true">
-        <span class="fc-k">Piano industriale · EBITDA</span>
-        <svg viewBox="0 0 180 80" width="180" height="80">
-          <line x1="0" y1="70" x2="180" y2="70" class="fc-axis"/>
-          <rect x="12" y="44" width="30" height="26" rx="3" class="fc-bar"/>
-          <rect x="62" y="32" width="30" height="38" rx="3" class="fc-bar"/>
-          <rect x="112" y="18" width="30" height="52" rx="3" class="fc-bar fc-hi"/>
-          <polyline points="27,40 77,28 127,12" class="fc-line"/>
-          <circle cx="127" cy="12" r="4" class="fc-dot"/>
-        </svg>
-        <span class="fc-yrs"><i>Anno 1</i><i>Anno 2</i><i>Anno 3</i></span>
-      </div>
-      <div class="float-card fc-esg" aria-hidden="true">
-        <svg viewBox="0 0 64 64" width="56" height="56">
-          <circle cx="32" cy="32" r="26" class="fc-ring"/>
-          <circle cx="32" cy="32" r="26" class="fc-ring-on" pathLength="100" stroke-dasharray="72 100" transform="rotate(-90 32 32)"/>
-        </svg>
-        <span><b>E · S · G</b><small>dati misurati, non dichiarati</small></span>
-      </div>
-    </div>
+    <aside class="why-now" aria-labelledby="why-h">
+      <p class="eyebrow">Perché adesso</p>
+      <h2 id="why-h">Chi valuta la tua impresa guarda già l'ESG</h2>
+      <ol>
+        <li><b>Le banche</b><span>Le linee guida EBA sulla concessione del credito chiedono di considerare i fattori ESG nella valutazione del cliente.</span></li>
+        <li><b>I grandi clienti</b><span>Le imprese soggette a rendicontazione chiedono ai fornitori dati su emissioni, persone e governance.</span></li>
+        <li><b>Investitori e acquirenti</b><span>Fondi e compratori inseriscono l'analisi ESG nella due diligence: i rischi non gestiti diventano sconti sul prezzo.</span></li>
+      </ol>
+    </aside>
   </div>
   <div class="wrap">
     <div class="ledger" aria-label="In sintesi">
       <div><b>20+</b><span>anni di consulenza direzionale, finanziaria e organizzativa</span></div>
-      <div><b>4</b><span>aree di intervento integrate: ESG, organizzazione, piani, operazioni straordinarie</span></div>
+      <div><b>0 €</b><span>check-up ESG iniziale, con risultato immediato e priorità di intervento</span></div>
       <div><b>1:1</b><span>un interlocutore senior dall'analisi all'attuazione, senza passaggi di mano</span></div>
     </div>
   </div>
 </section>
 
-<!-- PROSSIMITÀ -->
-<section id="approccio" style="padding-top:0">
-  <div class="wrap prox-grid">
-    <div>
-      <p class="eyebrow">Approccio di prossimità</p>
-      <h2>Vicino all'impresa, non solo ai suoi numeri.</h2>
-      <p class="lead" style="margin-top:20px">Una PMI non è una grande azienda in piccolo. Le decisioni passano dall'imprenditore, le risorse sono contate e ogni progetto deve reggersi da solo. Per questo lavoro sul posto, con tempi e linguaggio dell'azienda.</p>
+<!-- VALORE -->
+<section id="valore">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Il valore della sostenibilità per una PMI</p>
+        <h2>Dove la sostenibilità diventa valore misurabile.</h2>
+      </div>
+      <p class="lead">Per una PMI la sostenibilità conta quando sposta numeri concreti: costo del debito, fatturato, costi operativi, valore d'impresa. Queste sono le sei leve che verifichiamo in ogni azienda, ciascuna con l'indicatore che la rende misurabile.</p>
     </div>
-    <div class="prox-list">
-      <div><h3>Presenza in azienda</h3><p>Le analisi si fanno in reparto, in amministrazione, con i responsabili. Le riunioni servono a decidere, non a presentare slide.</p></div>
-      <div><h3>Un solo referente senior</h3><p>Chi fa la diagnosi segue anche l'attuazione. Nessun junior mandato a imparare sul vostro progetto.</p></div>
-      <div><h3>Proporzionalità</h3><p>Strumenti e adempimenti dimensionati sulla PMI: il report ESG o il controllo di gestione devono servire, non appesantire.</p></div>
-      <div><h3>Ponte con banche e investitori</h3><p>Traduco i progetti dell'impresa nel linguaggio di istituti di credito, fondi e advisor, e viceversa.</p></div>
+    <div class="levers">
+      <article class="lever">
+        <span class="k">Credito</span>
+        <h3>Accesso al credito e condizioni</h3>
+        <p>Dati ESG ordinati migliorano il dialogo con le banche, che integrano la sostenibilità nel merito creditizio e offrono linee dedicate a investimenti green.</p>
+        <p class="kpi">Indicatore: spread e condizioni ottenute, finanziamenti ESG-linked</p>
+      </article>
+      <article class="lever">
+        <span class="k">Mercato</span>
+        <h3>Posizione nelle filiere</h3>
+        <p>Rispondere bene ai questionari dei clienti protegge le forniture esistenti e apre gare in cui la sostenibilità è un criterio di selezione.</p>
+        <p class="kpi">Indicatore: fatturato da clienti che richiedono dati ESG</p>
+      </article>
+      <article class="lever">
+        <span class="k">Costi</span>
+        <h3>Energia, materiali e sprechi</h3>
+        <p>Misurare consumi e scarti fa emergere risparmi immediati: efficienza energetica, autoproduzione, riduzione di scarti e imballaggi.</p>
+        <p class="kpi">Indicatore: costo energetico su fatturato, kWh per unità prodotta</p>
+      </article>
+      <article class="lever">
+        <span class="k">Agevolazioni</span>
+        <h3>Bandi e incentivi</h3>
+        <p>Molti strumenti di finanza agevolata premiano gli investimenti in transizione energetica e digitale, e chiedono di documentare l'impatto ambientale.</p>
+        <p class="kpi">Indicatore: contributi e crediti d'imposta ottenuti</p>
+      </article>
+      <article class="lever">
+        <span class="k">Persone</span>
+        <h3>Attrarre e trattenere talenti</h3>
+        <p>Welfare, sicurezza, formazione e clima interno incidono su turnover e produttività, soprattutto dove le competenze sono difficili da trovare.</p>
+        <p class="kpi">Indicatore: turnover, ore di formazione, indice infortuni</p>
+      </article>
+      <article class="lever">
+        <span class="k">Valore</span>
+        <h3>Valore d'impresa e operazioni</h3>
+        <p>In una cessione, un passaggio generazionale o l'ingresso di un fondo, un profilo ESG solido riduce i rischi percepiti e rende l'azienda più appetibile.</p>
+        <p class="kpi">Indicatore: rischi emersi in due diligence, multipli negoziati</p>
+      </article>
+    </div>
+    <div class="context">
+      <h3>Il quadro di riferimento, in breve</h3>
+      <dl>
+        <div><dt>CSRD e semplificazioni europee</dt><dd>L'obbligo di rendicontazione riguarda le imprese più grandi, ma i loro dati dipendono dalla catena di fornitura: le richieste arrivano comunque alle PMI.</dd></div>
+        <div><dt>Standard VSME</dt><dd>Lo standard volontario per le PMI elaborato da EFRAG è il riferimento per rispondere a clienti e banche con un unico set di dati.</dd></div>
+        <div><dt>Merito creditizio</dt><dd>Le banche inseriscono i fattori ESG nei processi di concessione e monitoraggio del credito, anche verso le piccole imprese.</dd></div>
+        <div><dt>Private equity e M&amp;A</dt><dd>Le politiche ESG dei fondi rendono l'analisi di sostenibilità una parte standard della due diligence.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- CHECK-UP -->
+<section id="checkup">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div>
+        <p class="eyebrow">Strumento gratuito</p>
+        <h2>Check-up ESG: dove si trova oggi la tua impresa?</h2>
+      </div>
+      <div>
+        <p class="lead">Dodici domande, cinque minuti. Ottieni subito un punteggio per ambiente, persone e governance, il livello di urgenza e le prime tre priorità su cui lavorare.</p>
+        <div class="badges"><span>Gratuito</span><span>Risultato immediato</span><span>Nessun dato inviato</span></div>
+      </div>
+    </div>
+
+    <div class="ck">
+      <form class="ck-q" id="ck-form" aria-label="Domande del check-up ESG"></form>
+      <aside class="ck-res" aria-live="polite">
+        <p class="eyebrow">Il tuo risultato</p>
+        <div class="score">
+          <svg viewBox="0 0 100 100" width="104" height="104" aria-hidden="true">
+            <circle cx="50" cy="50" r="42" class="ring-bg"/>
+            <circle cx="50" cy="50" r="42" class="ring-fg" id="ck-ring" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 50 50)"/>
+            <text x="50" y="54" text-anchor="middle" class="ring-num" id="ck-num">0</text>
+            <text x="50" y="70" text-anchor="middle" class="ring-sub">su 100</text>
+          </svg>
+          <div><b id="ck-level">Inizia a rispondere</b><span id="ck-level-d">Il punteggio si aggiorna a ogni risposta.</span></div>
+        </div>
+        <p class="ck-progress" id="ck-progress">0 di 12 risposte</p>
+        <div class="meters">
+          <div class="meter"><span>Ambiente</span><i id="m-E"></i><em id="v-E">0</em></div>
+          <div class="meter"><span>Persone</span><i id="m-S"></i><em id="v-S">0</em></div>
+          <div class="meter"><span>Governance</span><i id="m-G"></i><em id="v-G">0</em></div>
+        </div>
+        <p class="urg" id="ck-urg">Urgenza: rispondi alle domande sul mercato per stimarla.</p>
+        <div class="prio">
+          <h4>Le tue priorità</h4>
+          <ol id="ck-prio"><li>Compariranno qui in base alle risposte.</li></ol>
+        </div>
+        <a class="btn" href="#contatti" id="ck-cta">Ricevi l'analisi commentata gratuita</a>
+        <p class="fine">Il calcolo avviene nel tuo browser. Il risultato è indicativo e non sostituisce una valutazione in azienda.</p>
+      </aside>
     </div>
   </div>
 </section>
@@ -345,9 +452,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="sec-head">
       <div>
         <p class="eyebrow">Servizi</p>
-        <h2>Quattro aree, un'unica regia.</h2>
+        <h2>Dopo il check-up: i servizi per crescere.</h2>
       </div>
-      <p class="lead">Si possono attivare singolarmente o insieme. Spesso il percorso parte da un'esigenza precisa, come un questionario ESG di un cliente o una banca che chiede un piano, e si allarga da lì.</p>
+      <p class="lead">La sostenibilità è il punto di ingresso, il valore si costruisce su tutta l'impresa. Le quattro aree si attivano singolarmente o insieme, con un unico referente.</p>
     </div>
 
     <div class="services" id="services">
@@ -409,14 +516,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <h3>Piani industriali e business plan</h3>
           <p class="for">PER: imprenditori · CdA · soci · banche</p>
           <p class="intro">Un piano credibile unisce strategia e numeri: ricavi, marginalità, investimenti e flussi di cassa. Lo costruisco con il management, in modo che sia uno strumento di governo e non un documento da cassetto.</p>
-          <svg class="svc-fig" viewBox="0 0 260 90" aria-hidden="true">
-            <line x1="0" y1="74" x2="260" y2="74" class="ln" stroke-width="1"/>
-            <rect x="20" y="46" width="44" height="28" rx="3" class="sf" stroke-width="1.5"/>
-            <rect x="108" y="32" width="44" height="42" rx="3" class="sf" stroke-width="1.5"/>
-            <rect x="196" y="14" width="44" height="60" rx="3" class="ac"/>
-            <polyline points="42,40 130,26 218,8" fill="none" stroke="var(--ochre)" stroke-width="2" stroke-dasharray="4 4"/>
-            <text x="42" y="88" text-anchor="middle" class="tx">Anno 1</text><text x="130" y="88" text-anchor="middle" class="tx">Anno 2</text><text x="218" y="88" text-anchor="middle" class="tx">Anno 3</text>
-          </svg>
         </div>
         <div>
           <ul>
@@ -461,21 +560,20 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   </div>
 </section>
 
-<!-- GALLERIA -->
-<section class="gallery-sec" aria-label="Immagini" style="padding-bottom:0">
-  <div class="wrap gallery">
-    <figure class="photo" style="margin:0">
-      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="Ufficio moderno con postazioni di lavoro" loading="lazy" onerror="this.remove()">
-      <figcaption>Organizzazione</figcaption>
-    </figure>
-    <figure class="photo" style="margin:0">
-      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=800&amp;q=70" alt="Documenti con grafici e analisi finanziarie" loading="lazy" onerror="this.remove()">
-      <figcaption>Numeri e piani</figcaption>
-    </figure>
-    <figure class="photo" style="margin:0">
-      <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&amp;fit=crop&amp;w=800&amp;q=70" alt="Pale eoliche in un paesaggio aperto" loading="lazy" onerror="this.remove()">
-      <figcaption>Sostenibilità</figcaption>
-    </figure>
+<!-- PROSSIMITÀ -->
+<section id="approccio">
+  <div class="wrap prox-grid">
+    <div>
+      <p class="eyebrow">Approccio di prossimità</p>
+      <h2>Vicino all'impresa, non solo ai suoi numeri.</h2>
+      <p class="lead" style="margin-top:20px">Una PMI non è una grande azienda in piccolo. Le decisioni passano dall'imprenditore, le risorse sono contate e ogni progetto deve reggersi da solo. Per questo lavoro sul posto, con tempi e linguaggio dell'azienda.</p>
+    </div>
+    <div class="prox-list">
+      <div><h3>Presenza in azienda</h3><p>Le analisi si fanno in reparto, in amministrazione, con i responsabili. Le riunioni servono a decidere, non a presentare slide.</p></div>
+      <div><h3>Un solo referente senior</h3><p>Chi fa la diagnosi segue anche l'attuazione. Nessun junior mandato a imparare sul vostro progetto.</p></div>
+      <div><h3>Proporzionalità</h3><p>Strumenti e adempimenti dimensionati sulla PMI: il report ESG o il controllo di gestione devono servire, non appesantire.</p></div>
+      <div><h3>Ponte con banche e investitori</h3><p>Traduco i progetti dell'impresa nel linguaggio di istituti di credito, fondi e advisor, e viceversa.</p></div>
+    </div>
   </div>
 </section>
 
@@ -618,6 +716,90 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <script>
 (function () {
+  // Check-up ESG: domande, punteggio e priorità
+  var Q = [
+    { a: 'E', id: 'e1', t: 'Conosci i consumi energetici annui, per sito e per fonte?', p: 'Misurare i consumi energetici per sito e fonte: è la base di ogni dato ambientale.' },
+    { a: 'E', id: 'e2', t: 'Hai calcolato le emissioni di CO₂ dell\'azienda (almeno dirette ed energia acquistata)?', p: 'Calcolare l\'impronta carbonica Scope 1 e 2, il dato più richiesto da clienti e banche.' },
+    { a: 'E', id: 'e3', t: 'Hai interventi o obiettivi di efficienza energetica o di energia rinnovabile?', p: 'Definire un piano di efficienza energetica e rinnovabili, con risparmi e incentivi stimati.' },
+    { a: 'E', id: 'e4', t: 'Misuri rifiuti e scarti, con obiettivi di riduzione o riciclo?', p: 'Monitorare rifiuti e scarti di produzione e fissare obiettivi di riduzione.' },
+    { a: 'S', id: 's1', t: 'Monitori infortuni, ore di formazione e turnover del personale?', p: 'Raccogliere gli indicatori sulle persone: sicurezza, formazione, turnover.' },
+    { a: 'S', id: 's2', t: 'Hai politiche su welfare, parità di genere o conciliazione vita-lavoro?', p: 'Formalizzare welfare e pari opportunità, utili anche per certificazioni e bandi.' },
+    { a: 'S', id: 's3', t: 'Valuti i fornitori anche su criteri ambientali e sociali?', p: 'Introdurre criteri ESG nella selezione e valutazione dei fornitori.' },
+    { a: 'G', id: 'g1', t: 'Hai un codice etico o un modello organizzativo ex D.Lgs. 231/2001?', p: 'Adottare un codice etico e valutare il modello organizzativo 231.' },
+    { a: 'G', id: 'g2', t: 'C\'è una persona responsabile della sostenibilità, con obiettivi assegnati?', p: 'Nominare un referente interno per la sostenibilità con obiettivi chiari.' },
+    { a: 'G', id: 'g3', t: 'Hai un piano di sostenibilità o pubblichi dati ESG (report, sito, bilancio)?', p: 'Redigere un primo report secondo lo standard VSME e un piano con obiettivi.' },
+    { a: 'M', id: 'm1', t: 'Clienti, banche o partner ti hanno già chiesto dati o questionari ESG?' },
+    { a: 'M', id: 'm2', t: 'Nei prossimi 2 anni prevedi finanziamenti, bandi, cessione o ingresso di soci?' }
+  ];
+  var GROUPS = { E: 'Ambiente', S: 'Persone', G: 'Governance', M: 'Mercato' };
+  var NOTE = { E: 'energia, emissioni, risorse', S: 'lavoratori e fornitori', G: 'regole e responsabilità', M: 'quanto ti viene chiesto' };
+  var ckForm = document.getElementById('ck-form');
+  ['E', 'S', 'G', 'M'].forEach(function (g) {
+    var box = document.createElement('div'); box.className = 'ck-group';
+    box.innerHTML = '<h3>' + GROUPS[g] + '<small>' + NOTE[g] + '</small></h3>';
+    Q.filter(function (q) { return q.a === g; }).forEach(function (q) {
+      var row = document.createElement('div'); row.className = 'q';
+      var opts = [['2', 'Sì'], ['1', 'In parte'], ['0', 'No']];
+      row.innerHTML = '<p id="t-' + q.id + '">' + q.t + '</p><div class="seg" role="radiogroup" aria-labelledby="t-' + q.id + '">' +
+        opts.map(function (o) { var id = q.id + '-' + o[0]; return '<input type="radio" name="' + q.id + '" id="' + id + '" value="' + o[0] + '"><label for="' + id + '">' + o[1] + '</label>'; }).join('') + '</div>';
+      box.appendChild(row);
+    });
+    ckForm.appendChild(box);
+  });
+
+  var LEVELS = [
+    [35, 'Punto di partenza', 'Le basi vanno costruite: con pochi interventi mirati si recupera terreno in fretta.'],
+    [70, 'In sviluppo', 'Ci sono buone pratiche da mettere a sistema e rendere misurabili.'],
+    [101, 'Avanzato', 'L\'impresa è strutturata: ora conta valorizzare i risultati verso clienti, banche e investitori.']
+  ];
+  function val(id) { var c = ckForm.querySelector('input[name="' + id + '"]:checked'); return c ? +c.value : null; }
+  function setMeter(a, v) { document.getElementById('m-' + a).style.setProperty('--w', v + '%'); document.getElementById('v-' + a).textContent = v; }
+  var last = null;
+  function update() {
+    var sums = { E: [0, 0], S: [0, 0], G: [0, 0] }, answered = 0, gaps = [];
+    Q.forEach(function (q) {
+      var v = val(q.id); if (v !== null) answered++;
+      if (q.a === 'M') return;
+      sums[q.a][0] += v || 0; sums[q.a][1] += 2;
+      if (v !== null && v < 2) gaps.push({ v: v, p: q.p });
+    });
+    var tot = 0, max = 0;
+    ['E', 'S', 'G'].forEach(function (a) { setMeter(a, Math.round(sums[a][0] / sums[a][1] * 100)); tot += sums[a][0]; max += sums[a][1]; });
+    var score = Math.round(tot / max * 100);
+    document.getElementById('ck-num').textContent = score;
+    document.getElementById('ck-ring').setAttribute('stroke-dasharray', score + ' 100');
+    document.getElementById('ck-progress').textContent = answered + ' di ' + Q.length + ' risposte' + (answered < Q.length && answered > 0 ? ' · risultato provvisorio' : '');
+    var lv = LEVELS.filter(function (l) { return score < l[0]; })[0];
+    document.getElementById('ck-level').textContent = answered ? lv[1] : 'Inizia a rispondere';
+    document.getElementById('ck-level-d').textContent = answered ? lv[2] : 'Il punteggio si aggiorna a ogni risposta.';
+
+    var m1 = val('m1'), m2 = val('m2'), urg = document.getElementById('ck-urg');
+    if (m1 === null && m2 === null) urg.textContent = 'Urgenza: rispondi alle domande sul mercato per stimarla.';
+    else {
+      var ex = (m1 || 0) + (m2 || 0);
+      urg.textContent = ex >= 3 ? 'Urgenza alta: le richieste ESG ti riguardano già o a breve. Conviene muoversi ora.'
+        : ex >= 1 ? 'Urgenza media: le richieste stanno arrivando. Prepararsi prima evita di rincorrere.'
+        : 'Urgenza bassa: hai il tempo per impostare un percorso con calma e anticipare il mercato.';
+    }
+
+    gaps.sort(function (a, b) { return a.v - b.v; });
+    var pr = document.getElementById('ck-prio');
+    pr.innerHTML = gaps.length ? gaps.slice(0, 3).map(function (g) { return '<li>' + g.p + '</li>'; }).join('')
+      : '<li>' + (answered ? 'Nessuna lacuna evidente sulle risposte date finora.' : 'Compariranno qui in base alle risposte.') + '</li>';
+    last = { score: score, level: lv[1], E: sums.E, S: sums.S, G: sums.G, answered: answered, prio: gaps.slice(0, 3).map(function (g) { return g.p; }) };
+  }
+  ckForm.addEventListener('change', update);
+  update();
+
+  // Porta il risultato nel modulo contatti
+  document.getElementById('ck-cta').addEventListener('click', function () {
+    if (!last || !last.answered) return;
+    var pct = function (s) { return Math.round(s[0] / s[1] * 100); };
+    document.getElementById('cf-area').value = 'Sostenibilità ESG';
+    document.getElementById('cf-msg').value = 'Ho fatto il check-up ESG sul sito.\nPunteggio: ' + last.score + '/100 (' + last.level + ')\nAmbiente ' + pct(last.E) + ' · Persone ' + pct(last.S) + ' · Governance ' + pct(last.G) +
+      (last.prio.length ? '\nPriorità indicate:\n- ' + last.prio.join('\n- ') : '') + '\n\nVorrei ricevere l\'analisi commentata.';
+  });
+
   // Copia email
   document.querySelectorAll('[data-copy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
