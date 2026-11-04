@@ -373,7 +373,11 @@ section { padding-block: clamp(72px, 10vw, 128px); position: relative; }
 #contatti::before { content: ""; position: absolute; width: 600px; height: 600px; max-width: 100%; left: -200px; bottom: -300px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--amber) 20%, transparent), transparent 65%); pointer-events: none; }
 #contatti .eyebrow { color: var(--mint); }
 #contatti .lead { color: var(--on-deep-muted); margin-top: 18px; }
-.contact { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); gap: clamp(32px, 6vw, 80px); align-items: start; position: relative; }
+.contact { display: grid; justify-items: center; text-align: center; position: relative; }
+.contact > div { width: 100%; max-width: 640px; display: grid; justify-items: center; }
+.contact .h2 { max-width: none; }
+.contact .lead { margin-inline: auto; }
+.direct { width: 100%; text-align: left; }
 .direct { margin-top: 32px; display: grid; gap: 10px; }
 .direct > div { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
 .direct .k { font: 500 0.72rem/1 var(--f-mono); color: var(--on-deep-muted); text-transform: uppercase; letter-spacing: 0.12em; width: 5.5rem; }
@@ -919,37 +923,13 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="rv">
       <p class="eyebrow">Contatti</p>
       <h2 class="h2">Raccontaci la tua impresa.</h2>
-      <p class="lead">Il primo incontro serve a capire se e come possiamo esserti utili. Senza impegno, in azienda o da remoto. Per provare il check-up ESG gratuito, scegli la voce dedicata nel modulo.</p>
+      <p class="lead">Il primo incontro serve a capire se e come possiamo esserti utili. Senza impegno, in azienda o da remoto. Per provare il check-up ESG gratuito, scrivici.</p>
       <div class="direct">
         <div><span class="k">Email</span><span class="v" id="mail">team@consulting4partners.it</span><button class="copy" type="button" data-copy="mail">Copia</button></div>
         <div><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/claudiofortunati/" target="_blank" rel="noopener">Claudio Fortunati</a></div>
         <div><span class="k">Zona</span><span class="v">Italia · in presenza e da remoto</span></div>
       </div>
     </div>
-    <form class="f rv" id="contact-form" novalidate>
-      <h3>Scrivici</h3>
-      <div class="row">
-        <label for="cf-name">Nome e cognome<input id="cf-name" name="name" autocomplete="name" required></label>
-        <label for="cf-company">Azienda<input id="cf-company" name="company" autocomplete="organization"></label>
-      </div>
-      <div class="row">
-        <label for="cf-email">Email<input id="cf-email" name="email" type="email" autocomplete="email" required></label>
-        <label for="cf-area">Area di interesse
-          <select id="cf-area" name="area">
-            <option>Check-up ESG gratuito</option>
-            <option>Sostenibilità ESG</option>
-            <option>Organizzazione e performance</option>
-            <option>Piano industriale</option>
-            <option>Acquisizioni, ristrutturazioni, cessioni</option>
-            <option>Non so ancora</option>
-          </select>
-        </label>
-      </div>
-      <label for="cf-msg">Messaggio<textarea id="cf-msg" name="message" placeholder="Settore, dimensione, cosa vorresti affrontare"></textarea></label>
-      <div><button class="btn dark" type="submit">Invia <svg class="ico arr" style="width:18px;height:18px"><use href="#i-arrow"/></svg></button></div>
-      <p class="consent">Inviando la richiesta dichiari di aver letto l'<a href="privacy.html">informativa privacy</a>. I dati servono solo a risponderti.</p>
-      <p class="msg" id="cf-out" aria-live="polite"></p>
-    </form>
   </div>
 </section>
 
