@@ -6,9 +6,7 @@
 <title>Consulting4Partners</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Claudio Fortunati – consulenza per PMI: aumentiamo il valore delle PMI italiane attraverso la sostenibilità. Check-up ESG gratuito con benchmark su oltre 1.300 aziende, organizzazione, piani industriali, operazioni straordinarie.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 /* Layout: hero scuro a tutta pagina con la "mappa" delle 1.300 aziende, sezioni chiare a card, fasce scure per check-up e contatti; servizi a schede. */
 :root {
@@ -331,11 +329,14 @@ form.f { display: grid; gap: 16px; background: var(--surface); color: var(--ink)
 .f input, .f select, .f textarea { font: 400 1rem/1.4 var(--f-body); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px; width: 100%; }
 .f textarea { min-height: 120px; resize: vertical; }
 .f input:focus, .f select:focus, .f textarea:focus { outline: 2px solid var(--moss); outline-offset: 1px; }
+.f .consent { font-size: 0.82rem; color: var(--muted); }
+.f .consent a { color: var(--moss); }
 .f .msg { font-size: 0.9rem; color: var(--moss); min-height: 1.4em; }
 @media (max-width: 860px) { .contact { grid-template-columns: minmax(0,1fr); } }
 @media (max-width: 520px) { .f .row { grid-template-columns: minmax(0,1fr); } }
 
 footer { background: var(--deep); color: var(--on-deep-muted); padding-block: 28px; border-top: 1px solid rgba(255,255,255,.07); font-size: 0.85rem; }
+footer a { color: var(--on-deep); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 
 /* CTA mobile */
@@ -787,8 +788,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <h2 class="h2">Raccontami la tua impresa.</h2>
       <p class="lead">Il primo incontro serve a capire se e come posso essere utile. Senza impegno, in azienda o da remoto. Per provare il check-up ESG gratuito, scegli la voce dedicata nel modulo.</p>
       <div class="direct">
-        <!-- Verificare indirizzo email, telefono e P.IVA prima della pubblicazione -->
-        <div><span class="k">Email</span><span class="v" id="mail">info@consulting4partners.it</span><button class="copy" type="button" data-copy="mail">Copia</button></div>
+        <div><span class="k">Email</span><span class="v" id="mail">team@consulting4partners.it</span><button class="copy" type="button" data-copy="mail">Copia</button></div>
         <div><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/claudiofortunati/" target="_blank" rel="noopener">Claudio Fortunati</a></div>
         <div><span class="k">Zona</span><span class="v">Italia · in presenza e da remoto</span></div>
       </div>
@@ -814,6 +814,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
       <label for="cf-msg">Messaggio<textarea id="cf-msg" name="message" placeholder="Settore, dimensione, cosa vorresti affrontare"></textarea></label>
       <div><button class="btn dark" type="submit">Prepara email <svg class="ico arr" style="width:18px;height:18px"><use href="#i-arrow"/></svg></button></div>
+      <p class="consent">Inviando la richiesta dichiari di aver letto l'<a href="privacy.html">informativa privacy</a>. I dati servono solo a risponderti.</p>
       <p class="msg" id="cf-out" aria-live="polite"></p>
     </form>
   </div>
@@ -823,8 +824,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Consulting4Partners · Claudio Fortunati · P.IVA da inserire</span>
-    <span>Consulenza per PMI · ESG · Organizzazione · Piani industriali · M&amp;A</span>
+    <span>© 2026 Consulting4Partners · P.IVA 04326000132 · P.IVA 04294420130</span>
+    <span><a href="mailto:team@consulting4partners.it">team@consulting4partners.it</a> · <a href="privacy.html">Privacy</a> · <a href="privacy.html#cookie">Cookie</a></span>
   </div>
 </footer>
 
